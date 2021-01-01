@@ -1,7 +1,7 @@
 const discoverReducer = (state = { discover: "" }, action) => {
 
     switch (action.type) {
-        case 'ADD' : 
+        case 'ADD_DISCOVER' : 
             return {
                 ...state,
                 discover: action.payload

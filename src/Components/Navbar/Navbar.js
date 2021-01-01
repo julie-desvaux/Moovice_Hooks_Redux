@@ -1,7 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
 export default function NavBar() {
+
+    const [search, setSearch] = useState("");
+
     return (
         <>
             <Navbar bg="dark" variant="dark">
@@ -14,8 +17,8 @@ export default function NavBar() {
                     <Nav.Link href="/my_list">My List</Nav.Link>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                    <Button variant="outline-info" href={`/search/${search}`}>Search</Button>
                 </Form>
             </Navbar>
         </>

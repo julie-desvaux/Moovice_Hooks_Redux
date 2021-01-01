@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Config from '../../Config'
-import Card from '../../Components/Cards/Cards'
+import Card from '../../Components/Card/Card'
 import moment from 'moment'
 import axios from 'axios'
 
@@ -17,7 +17,7 @@ export default function Discover() {
             const url = `${Config.API_ROOT}discover/movie?primary_release_date.gte=${TODAY}&primary_release_date.lte=${NEXT_WEEK}&sort_by=popularity.desc&include_adult=false&include_video=false&api_key=${Config.API_KEY}`;
             await axios.get(url).then((response) => {
                 dispatch({
-                    type: 'ADD',
+                    type: 'ADD_DISCOVER',
                     payload: response.data.results
                 })
             })
@@ -31,22 +31,18 @@ export default function Discover() {
 
     return (
         <div className="container">
-            <h1 className="text-center">Discover</h1>
-            <div className="row text-center">
+            <h1 className="text-center title">Discover</h1>
+            <div className="container-cards">
                 {discover.map((movie) => {
                     return(
-                        <div 
-                            className="col-12 col-lg-3"  
-                            key={movie.id} 
-                        >
-                            <Card 
-                                movie={movie}
-                            />
-                        </div>
+                        <Card 
+                            movie={movie}
+                            key={movie.id}
+                        />
                         )
                     })
                 }
-            </div>                
+            </div>
         </div>
     )
 }
