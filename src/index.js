@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import discoverReducer from './Reducers/discoverReducer'
 import popularReducer from './Reducers/popularReducer'
 import movieDetailsReducer from './Reducers/movieDetailsReducer'
-import searchTextReducer from './Reducers/searchReducer'
+import searchTextReducer from './Reducers/searchTextReducer'
 
 const rootReducer = combineReducers({
   discoverReducer,

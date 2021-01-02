@@ -1,4 +1,4 @@
-const discoverReducer = (state = { discover: "" }, action) => {
+const discoverReducer = (state = { discover: [] }, action) => {
 
     switch (action.type) {
         case 'ADD_DISCOVER' : 

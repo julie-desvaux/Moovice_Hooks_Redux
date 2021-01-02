@@ -16,7 +16,7 @@ export default function ModalComponent(props) {
                 See the trailer
             </Button>
     
-            <Modal show={show} onHide={handleClose} size="lg">
+            <Modal show={show} onHide={handleClose} size="xl">
                 <Modal.Header closeButton>
                     <Modal.Title>{movieDetails.title}</Modal.Title>
                 </Modal.Header>

@@ -23,7 +23,7 @@ export default function Discover() {
             })
         }
         fetchDataDiscover()
-    })
+    }, [dispatch])
 
     if (!discover) {
         return null
@@ -33,15 +33,12 @@ export default function Discover() {
         <div className="container">
             <h1 className="text-center title">Discover</h1>
             <div className="container-cards">
-                {discover.map((movie) => {
-                    return(
-                        <Card 
-                            movie={movie}
-                            key={movie.id}
-                        />
-                        )
-                    })
-                }
+                {discover.map((movie) => (
+                    <Card 
+                        movie={movie}
+                        key={movie.id}
+                    />
+                ))}
             </div>
         </div>
     )
