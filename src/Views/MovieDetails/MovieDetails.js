@@ -50,8 +50,6 @@ export default function MovieDetails() {
 
     }, [id, dispatch])
 
-    console.log('actors :', actors)
-
     if (!movieDetails || !trailer || !actors) {
         return null
     }

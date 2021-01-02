@@ -8,9 +8,7 @@ import picture2 from '../../Assets/picture2.png'
 
 export default function Cards(props) {
 
-    const { movie, actor } = props;
-
-    console.log(actor)
+    const { movie, actor, actorMovie } = props;
 
     if (actor) {
         return (
@@ -38,9 +36,26 @@ export default function Cards(props) {
                 <Card.Body>
                     <Card.Title>{movie.title}</Card.Title>
                     <Card.Text>
-                        Release date: {movie.release_date}
+                        Release date : {movie.release_date}
                     </Card.Text>
                     <Button variant="primary" href={`/movie/${movie.id}`}>Go details</Button>
+                </Card.Body>
+            </Card>
+        )
+    }
+
+    if (actorMovie) {
+        return (
+            <Card style={{ width: '18rem' }}>
+                <div className="card-poster">
+                    <Card.Img variant="top" src={actorMovie.poster_path !== null ? `${Config.IMG_ROOT}${actorMovie.poster_path}` : placeholder} alt={actorMovie.poster_path !== null ? `Poster of ${actorMovie.title}` : `Poster of DVD`}/>
+                </div>
+                <Card.Body>
+                    <Card.Title>{actorMovie.title}</Card.Title>
+                    <Card.Text>
+                        Character : {actorMovie.character}
+                    </Card.Text>
+                    <Button variant="primary" href={`/movie/${actorMovie.id}`}>Go details</Button>
                 </Card.Body>
             </Card>
         )

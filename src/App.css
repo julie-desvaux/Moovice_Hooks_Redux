@@ -15,7 +15,7 @@
 }
 
 .card-img-top {
-  height: 400px;
+  max-height: 400px;
   width: 100%;
 }
 

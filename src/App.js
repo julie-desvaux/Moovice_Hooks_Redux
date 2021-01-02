@@ -10,6 +10,7 @@ import Discover from './Views/Discover/Discover'
 import Popular from './Views/Popular/Popular'
 import MovieDetails from './Views/MovieDetails/MovieDetails'
 import ListSearch from './Views/ListSearch/ListSearch'
+import ActorDetails from './Views/ActorDetails/ActorDetails'
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path="/movie/:id">
           <MovieDetails />
+        </Route>
+        <Route exact path="/actor/:id">
+          <ActorDetails />
         </Route>
       </Switch>
     </Router>

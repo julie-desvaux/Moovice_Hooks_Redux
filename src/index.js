@@ -7,12 +7,14 @@ import discoverReducer from './Reducers/discoverReducer'
 import popularReducer from './Reducers/popularReducer'
 import movieDetailsReducer from './Reducers/movieDetailsReducer'
 import searchTextReducer from './Reducers/searchTextReducer'
+import actorDetailsReducer from './Reducers/actorDetailsReducer'
 
 const rootReducer = combineReducers({
   discoverReducer,
   popularReducer,
   movieDetailsReducer,
-  searchTextReducer
+  searchTextReducer,
+  actorDetailsReducer
 })
 
 const store = createStore(rootReducer)
