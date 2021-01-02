@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 
 export default function NavBar() {
 
-    const [search, setSearch] = useState("");
+    const { searchText } = useSelector(state => ({ ...state.searchTextReducer }))
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -17,8 +19,8 @@ export default function NavBar() {
                     <Nav.Link href="/my_list">My List</Nav.Link>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                    <Button variant="outline-info" href={`/search/${search}`}>Search</Button>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})}/>
+                    <Button variant="outline-info" href={`/search/${searchText}`}>Search</Button>
                 </Form>
             </Navbar>
         </>
