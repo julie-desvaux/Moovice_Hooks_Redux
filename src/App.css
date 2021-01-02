@@ -1,3 +1,125 @@
+/* 
+////////////////////////
+      PARTIE HEADER
+////////////////////////
+*/
+.headerTop {
+  background: #343a40;
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.listMenu {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  list-style-type: none;
+}
+
+.linksNav {
+  list-style-type: none;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.linksNav:nth-child(5) {
+  margin: 0 auto;
+  flex-shrink: 1;
+  width: 600px;
+}
+
+.link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.link:hover{
+  color: #45b0f8;
+  text-decoration: none;
+}
+
+.logo {
+  margin-top: 15px;
+}
+
+.formSubmit {
+  display: flex;
+  flex-shrink: 1;
+}
+
+.logoGlass {
+  width: 20px;
+}
+
+.inputSearch {
+  width: 50%;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.liensNav button {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 4px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.menuResBtn {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.menuIco {
+  width: 20px;
+}
+
+@media screen and (max-width: 950px) {
+  .linksNav:nth-child(4) {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .listMenu {
+    flex-direction: column;
+    height: 250px;
+    padding-top: 50px;
+  }
+  .linksNav {
+    height: 100px;
+    background: #18181B;
+    width: 100%;
+  }
+  .linksNav:nth-child(4) {
+    padding-left: 20x !important;
+  }
+  .linksNav:nth-child(4) {
+    width: 100% !important;
+    padding: 10px 0 20px 0;
+  }
+  .formSubmit {
+    justify-content: center;
+  }
+  .menuResBtn {
+    display: block !important;
+    z-index: 1000;
+  }
+}
+
+
 .title {
   margin: 2rem 0 3rem 0;
   font-weight: 700;
