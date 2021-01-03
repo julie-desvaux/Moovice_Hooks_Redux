@@ -5,6 +5,7 @@ import axios from 'axios'
 import Config from '../../Config'
 import Modal from '../../Components/Modal/Modal'
 import Card from '../../Components/Card/Card'
+import './MovieDetails.scss'
 
 export default function MovieDetails() {
 
@@ -55,21 +56,20 @@ export default function MovieDetails() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row image" style={{ backgroundImage:`url(${Config.IMG_BG_ROOT}${movieDetails.backdrop_path})`}}>
+        <div className="container-movie-details">
+            <div className="container-image" style={{ backgroundImage:`url(${Config.IMG_BG_ROOT}${movieDetails.backdrop_path})`}}>
                 <div className="calque">
-                    <div className="col-12 col-lg-4 mt-3 mb-3">
-                        <img className="img_details" src={`${Config.IMG_ROOT}${movieDetails.poster_path}`} alt={movieDetails.title} />
+                    <div className="subcontainer-poster">
+                        <img className="poster" src={`${Config.IMG_ROOT}${movieDetails.poster_path}`} alt={movieDetails.title} />
                     </div>
-                    <div className="col-12 col-lg-8 mt-3 mb-5">
-                        <h1 className="text-center">{movieDetails.title}</h1>
-                        <h3 className="text-center mt-3 mb-5">{movieDetails.tagline}</h3>
-                        <div className="row mb-3">
-                            {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="col-2 movie-genre text-center" key={i}>{genre.name}</div>)}
+                    <div className="subcontainer-details">
+                        <h1>{movieDetails.title}</h1>
+                        <h3 className="tagline">{movieDetails.tagline}</h3>
+                        <div className="movie-details">
+                            {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}>{genre.name}</div>)}
                             </div>
-                            <h5 className="mt-5">Synopsy : </h5>
-                            <p>{movieDetails.overview}</p>
-                            <h6 className="mt-3 mb-5">Release date : {movieDetails.release_date}</h6>
+                            <h4 className="subtitle">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
+                            <h4 className="subtitle">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
                             {trailer.id === undefined ? '' : 
                                 <Modal 
                                     movieDetails={movieDetails}
@@ -79,8 +79,8 @@ export default function MovieDetails() {
                     </div>
                 </div>
             </div>
-            <div className="row justify-content-between mt-5">
-                <h2 className="mt-2 mb-5 text-center title">Actors</h2>
+            <div>
+                <h2 className="title">Actors</h2>
                 <div className="container-cards">
                     {actors.map((actor) => (
                         <Card 

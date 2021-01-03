@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Config from '../../Config'
 import Card from '../../Components/Card/Card'
+import '../MovieDetails/MovieDetails.scss'
 
 export default function ActorDetails() {
 
@@ -43,23 +44,22 @@ export default function ActorDetails() {
     }
 
     return (
-        <div className="container mt-5">
-            <div className="row image">
+        <div className="container">
+            <div className="container-image">
                 <div className="calque">
-                    <div className="col-12 col-lg-4 mt-3 mb-3">
-                        <img className="img_details" src={`${Config.IMG_ROOT}${actorDetails.profile_path}`} alt={actorDetails.name} />
+                    <div className="subcontainer-poster">
+                        <img className="poster" src={`${Config.IMG_ROOT}${actorDetails.profile_path}`} alt={actorDetails.name} />
                     </div>
-                    <div className="col-12 col-lg-8 mt-3 mb-5">
-                        <h1 className="text-center">{actorDetails.name}</h1>
-                        <p className="text-center mt-3 mb-5">{actorDetails.biography}</p>
-                        <div className="row mb-3">
-                            <h5 className="mt-5">Birthday : </h5>
-                            <p>{actorDetails.birthday}</p>
+                    <div className="subcontainer-details">
+                        <h1>{actorDetails.name}</h1>
+                        <p className="tagline">{actorDetails.biography}</p>
+                        <div className="details">
+                            <h4 className="subtitle">Birthday : <span className="bold-normal">{actorDetails.birthday}</span></h4>
                             {actorDetails.homepage !== null ? 
                                 (
                                     <>
-                                        <h5>Homepage : </h5>
-                                        <p>{actorDetails.homepage}</p>
+                                        <h4 className="subtitle">Homepage : <span className="bold-normal"><a className="font-size-1" href={actorDetails.homepage}>{actorDetails.homepage}</a></span></h4>
+                                        
                                     </>
                                 ):null
                             }
@@ -67,8 +67,8 @@ export default function ActorDetails() {
                     </div>
                 </div>
             </div>
-            <div className="row justify-content-between mt-5">
-                <h2 className="mt-2 mb-5 text-center title">Filmography</h2>
+            <div>
+                <h2 className="title">Filmography</h2>
                 <div className="container-cards">
                     {actorMoviesList.map((actorMovie) => (
                         <Card 

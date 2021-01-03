@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import Config from '../../Config'
 import Card from '../../Components/Card/Card'
@@ -8,7 +8,7 @@ import Card from '../../Components/Card/Card'
 export default function ListSearch() {
 
     const { search } = useParams()
-    const { searchText } = useSelector(state => ({ ...state.searchText }))
+    // const { searchText } = useSelector(state => ({ ...state.searchText }))
     const [ searchList, setSearchList ] = useState(null)
     const dispatch = useDispatch()
 

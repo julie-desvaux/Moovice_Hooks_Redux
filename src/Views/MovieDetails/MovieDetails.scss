@@ -1,0 +1,73 @@
+.container-image {
+    width: 100%;
+    height: 100vh;
+    border-bottom: 1px solid var(--primaryColor);
+    background-position: right -200px top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    @media screen and (max-width: 850px){
+        height: auto
+    }
+    .calque {
+        width: 100%;
+        background-image: linear-gradient(to right, rgba(6.67%, 5.10%, 4.71%, 1.00) 150px, rgba(6.67%, 5.10%, 4.71%, 0.84) 100%);
+        display: flex;
+        color: white;
+        padding: 5rem;
+        @media screen and (max-width: 1025px) {
+            padding: 0.5rem;
+        }
+        @media screen and (max-width: 900px) {
+            padding: 0.5rem;
+            flex-direction: column;
+        }
+        .subcontainer-poster {
+            margin-right: 2rem;
+            @media screen and (max-width: 1025px) {
+                margin-right: 1rem;
+            }
+            @media screen and (max-width: 900px) {
+                margin: 0 auto
+            }
+        }
+        .subcontainer-details {
+            .tagline {
+                margin: 1rem 0;
+            }
+            .movie-details {
+                display: flex;
+                justify-content: space-around;
+                @media screen and (max-width: 450px) {
+                    flex-direction: column;
+                }
+                .movie-genre-item {
+                    margin: 1.5rem 0;
+                    background-color: #fff;
+                    color: black;
+                    border-radius: 5px;
+                    padding: 4px 20px;
+                    border: none;
+                    font-weight: bold;
+                    &:hover {
+                        color: #45b0f8;
+                    }
+                }
+                
+            }
+        }
+        
+    }
+}
+
+.subtitle {
+    margin: 1.5rem 0
+}
+
+.bold-normal {
+    font-weight: normal;
+}
+
+.font-size-1 {
+    font-size: 1rem;
+}

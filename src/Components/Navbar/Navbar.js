@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Link } from 'react-router-dom';
-import search from '../../Assets/Search.svg';
-import menuIco from '../../Assets/MenuIco.svg';
-import cross from '../../Assets/Cross.svg';
+import { Link } from 'react-router-dom'
+import search from '../../Assets/Search.svg'
+import menuIco from '../../Assets/MenuIco.svg'
+import cross from '../../Assets/Cross.svg'
+import './Navbar.scss'
 
 export default function NavBar() {
 
@@ -50,9 +51,10 @@ export default function NavBar() {
     }
 
     return (
-        <div>
-            <nav className="headerTop">
+        <div className="navbar-container">
+            <nav className="navbar-subcontainer">
                 {(menu || !smallScreen) && (
+                    <>
                     <ul className="listMenu">
                         <li onClick={hideMenu} className="linksNav">
                             <Link className="link" to="/">
@@ -74,17 +76,20 @@ export default function NavBar() {
                                 My List
                             </Link>   
                         </li>
+                    </ul>
+                    <ul className="listMenu search-bar">
                         <li className="linksNav">
                             <form action="" className="formSubmit" onSubmit={handleSubmit}>
                                 <input value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})} type="text" className="inputSearch"/>
                                 <Link className="link" to={{pathname: `/search/${searchText}`}}>
-                                    <button type="submit">
+                                    <button type="submit" className="btn-search">
                                         <img src={search} alt="icon magnifying glass" className="logoGlass"/>
                                     </button>
                                 </Link>
                             </form>
                         </li>
                     </ul>
+                    </>
                 )}
             </nav>
             <div className="menuResBtn">
@@ -93,26 +98,4 @@ export default function NavBar() {
         </div>
     )
 
-
-
-
-
-    // return (
-    //     <>
-    //         <Navbar bg="dark" variant="dark">
-    //             <Navbar.Brand href="/">Moovice</Navbar.Brand>
-    //             <Nav className="mr-auto">
-    //                 <Nav.Link href="/">This Week</Nav.Link>
-    //                 <Nav.Link href="/week_battle">This Week Battle</Nav.Link>
-    //                 <Nav.Link href="/popular">Popular</Nav.Link>
-    //                 <Nav.Link href="/popular_battle">Popular Battle</Nav.Link>
-    //                 <Nav.Link href="/my_list">My List</Nav.Link>
-    //             </Nav>
-    //             <Form inline>
-    //                 <FormControl type="text" placeholder="Search" className="mr-sm-2" value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})}/>
-    //                 <Button variant="outline-info" href={`/search/${searchText}`}>Search</Button>
-    //             </Form>
-    //         </Navbar>
-    //     </>
-    // )
 }

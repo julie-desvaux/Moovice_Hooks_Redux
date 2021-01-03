@@ -1,0 +1,117 @@
+.navbar-container {
+    .navbar-subcontainer {
+        background: #343a40;
+        height: 50px;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+    }
+    
+    .listMenu {
+        height: 50px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        list-style-type: none;
+    }
+    
+    .linksNav {
+        list-style-type: none;
+        padding: 0 20px;
+        color: #fff;
+    }
+
+    .search-bar {
+        justify-content: flex-end;
+    }
+
+    .search-bar .linksNav{
+        flex-shrink: 1;
+    }
+    
+    .link {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .link:hover{
+        color: #45b0f8;
+        text-decoration: none;
+    }
+    
+    .logo {
+        margin-top: 15px;
+    }
+    
+    .formSubmit {
+        display: flex;
+        flex-shrink: 1;
+    }
+    
+    .logoGlass {
+        width: 20px;
+    }
+    
+    .inputSearch {
+        width: 300px;
+        background-color: #fff;
+        border: 2px solid #fff;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    
+    .btn-search {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 4px 20px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .menuResBtn {
+        display: none;
+        position: fixed;
+        top: 10px;
+        right: 20px;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+    
+    .menuIco {
+        width: 20px;
+    }
+    
+    @media screen and (max-width: 950px) {
+        .navbar-subcontainer  {
+            z-index: 1000;
+            flex-direction: column;
+        }
+    }
+    
+    @media screen and (max-width: 900px) {
+        .listMenu {
+            flex-direction: column;
+            height: 250px;
+            padding-top: 50px;
+            z-index: 1000;
+        }
+        .search-bar {
+            padding-top: 0;
+        }
+        .linksNav {
+            padding-top: 15px;
+            height: 60px;
+            background: #18181B;
+            width: 100%;
+        }
+        .formSubmit {
+            justify-content: center;
+        }
+        .menuResBtn {
+            display: block !important;
+            z-index: 1000;
+        }
+    }
+}
