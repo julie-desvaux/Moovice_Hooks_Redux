@@ -5,6 +5,7 @@ import axios from 'axios'
 import Config from '../../Config'
 import Modal from '../../Components/Modal/Modal'
 import Card from '../../Components/Card/Card'
+import hourglass from '../../Assets/hourglass.svg'
 import './MovieDetails.scss'
 
 export default function MovieDetails() {
@@ -38,6 +39,7 @@ export default function MovieDetails() {
         async function fetchDataActors() {
             const urlActors = `${Config.API_ROOT}movie/${id}/casts?api_key=${Config.API_KEY}`;
             await axios.get(urlActors).then((responseActors) => {
+                console.log("cast :", responseActors.data)
                 dispatch({
                     type: 'ADD_ACTORS',
                     payload: responseActors.data.cast
@@ -52,6 +54,14 @@ export default function MovieDetails() {
     }, [id, dispatch])
 
     console.log("movieDetails :", movieDetails)
+
+    const runtimeFormat = (runtime) => {
+        let reste = runtime;
+        let nbHours = Math.floor(reste / 60);
+        reste -= nbHours * 60;
+        let result = nbHours + 'h ' + reste + 'min';
+        return result;
+    } 
 
     if (!movieDetails || !trailer || !actors) {
         return null
@@ -71,8 +81,12 @@ export default function MovieDetails() {
                             {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}>{genre.name}</div>)}
                             </div>
                             <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
-                            <h4 className="subtitle lemon">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
-                            <div className="finance">
+                            <div className="flex">
+                                <h4 className="subtitle lemon margin-right">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                                <h4 className="subtitle lemon margin-right">Status : <span className="bold-normal">{movieDetails.status}</span></h4>
+                                <div className="subtitle lemon margin-right flex"><img className="img-h4" src={hourglass} alt="Runtime"/>  : <span className="bold-normal"> {runtimeFormat(movieDetails.runtime)}</span></div>
+                            </div>
+                            <div className="flex">
                                 <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">$ {movieDetails.budget}</span></h4>
                                 <h4 className="subtitle lemon">Revenue : <span className="bold-normal">$ {movieDetails.revenue}</span></h4>
                             </div>                            

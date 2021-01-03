@@ -15,7 +15,7 @@ export default function ListSearch() {
     useEffect(() => {
 
         async function fetchDataSearch() {
-            const url = `${Config.API_ROOT}search/movie?include_adult=false&api_key=${Config.API_KEY}&query=${search}`
+            const url = `${Config.API_ROOT}search/multi?include_adult=false&api_key=${Config.API_KEY}&query=${search}`
             await axios.get(url).then((response) => {
                 console.log(response.data.results)
                 setSearchList(response.data.results)
