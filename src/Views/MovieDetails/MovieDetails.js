@@ -51,6 +51,8 @@ export default function MovieDetails() {
 
     }, [id, dispatch])
 
+    console.log("movieDetails :", movieDetails)
+
     if (!movieDetails || !trailer || !actors) {
         return null
     }
@@ -63,13 +65,25 @@ export default function MovieDetails() {
                         <img className="poster" src={`${Config.IMG_ROOT}${movieDetails.poster_path}`} alt={movieDetails.title} />
                     </div>
                     <div className="subcontainer-details">
-                        <h1>{movieDetails.title}</h1>
+                        <h1 className="lemon">{movieDetails.title}</h1>
                         <h3 className="tagline">{movieDetails.tagline}</h3>
                         <div className="movie-details">
                             {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}>{genre.name}</div>)}
                             </div>
-                            <h4 className="subtitle">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
-                            <h4 className="subtitle">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                            <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
+                            <h4 className="subtitle lemon">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                            <div className="finance">
+                                <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">$ {movieDetails.budget}</span></h4>
+                                <h4 className="subtitle lemon">Revenue : <span className="bold-normal">$ {movieDetails.revenue}</span></h4>
+                            </div>                            
+                            {movieDetails.homepage !== null ? 
+                                (
+                                    <>
+                                        <h4 className="subtitle lemon">Homepage : <span className="bold-normal"><a className="font-size-1" href={movieDetails.homepage}>{movieDetails.homepage}</a></span></h4>
+                                        
+                                    </>
+                                ):null
+                            }
                             {trailer.id === undefined ? '' : 
                                 <Modal 
                                     movieDetails={movieDetails}

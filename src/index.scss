@@ -22,7 +22,7 @@ html {
 			text-align: center;
 			font-size: 3.5rem;
 			line-height: 4.5rem;
-			font-weight: bold;
+    		color: #182825;
 			@media screen and (max-width: 450px){
 				font-size: 2.5rem;
 			}
@@ -52,12 +52,12 @@ html {
 			margin: 0 0.4rem;
 			text-decoration: none;
 			font-size: 1.125rem;
-			color: #ffffff;
+			color: #45b0f8;
 			transition: color 0.3s ease-in-out;
 		}
 
 		a:hover {
-			color:  #45b0f8;
+			color:  #ffffff;
 		}
 	
 		button {

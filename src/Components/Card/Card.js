@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Button } from 'react-bootstrap'
 import Config from '../../Config'
 import placeholder from '../../Assets/placeholder.png'
 import picture0 from '../../Assets/picture0.png'
