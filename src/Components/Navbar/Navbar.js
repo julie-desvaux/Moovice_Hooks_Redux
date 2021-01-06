@@ -80,7 +80,7 @@ export default function NavBar() {
                     <ul className="listMenu search-bar">
                         <li className="linksNav">
                             <form action="" className="formSubmit" onSubmit={handleSubmit}>
-                                <input value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})} type="text" className="inputSearch"/>
+                                <input value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})} type="text" className="inputSearch" onFocus={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: ""})}/>
                                 <Link className="link" to={{pathname: `/search/${searchText}`}}>
                                     <button type="submit" className="btn-search">
                                         <img src={search} alt="icon magnifying glass" className="logoGlass"/>

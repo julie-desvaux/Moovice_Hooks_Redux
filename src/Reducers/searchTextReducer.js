@@ -1,10 +1,15 @@
-const searchTextReducer = (state = { searchText: "", menu: false, smallScreen: false }, action) => {
+const searchTextReducer = (state = { searchText: "", searchList: "", menu: false, smallScreen: false }, action) => {
     
     switch (action.type) {
         case 'ADD_SEARCH_TEXT' :
             return {
                 ...state,
                 searchText: action.payload
+            }
+        case 'ADD_SEARCH_LIST' :
+            return {
+                ...state,
+                searchList: action.payload
             }
         case 'SHOW_MENU' :
             return {

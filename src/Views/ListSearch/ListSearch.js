@@ -8,7 +8,7 @@ import Card from '../../Components/Card/Card'
 export default function ListSearch() {
 
     const { search } = useParams()
-    // const { searchText } = useSelector(state => ({ ...state.searchText }))
+    // const { searchList } = useSelector(state => ({ ...state.searchList }))
     const [ searchList, setSearchList ] = useState(null)
     const dispatch = useDispatch()
 
@@ -17,10 +17,9 @@ export default function ListSearch() {
         async function fetchDataSearch() {
             const url = `${Config.API_ROOT}search/multi?include_adult=false&api_key=${Config.API_KEY}&query=${search}`
             await axios.get(url).then((response) => {
-                console.log(response.data.results)
                 setSearchList(response.data.results)
                 // dispatch({
-                //     type: 'ADD_SEARCH_TEXT',
+                //     type: 'ADD_SEARCH_LIST',
                 //     payload: response.data.results
                 // })
             })
@@ -29,7 +28,7 @@ export default function ListSearch() {
 
     }, [search, dispatch])
 
-    console.log(searchList)
+    console.log("searchList", searchList)
 
     if (!searchList) {
         return null

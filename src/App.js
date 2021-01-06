@@ -25,11 +25,11 @@ function App() {
         <Route exact path="/search/:search">
           <ListSearch />
         </Route>
-        <Route exact path="/movie/:id">
-          <MovieDetails />
-        </Route>
         <Route exact path="/actor/:id">
           <ActorDetails />
+        </Route>
+        <Route exact path="/:media_type/:id">
+          <MovieDetails />
         </Route>
       </Switch>
     </Router>

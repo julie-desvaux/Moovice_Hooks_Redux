@@ -10,40 +10,53 @@ import './MovieDetails.scss'
 
 export default function MovieDetails() {
 
-    const { id } = useParams()
+    const { media_type, id } = useParams()
     const { movieDetails, trailer, actors } = useSelector(state => ({ ...state.movieDetailsReducer }))
     const dispatch = useDispatch()
 
     useEffect(() => {
 
         async function fetchDataMovieDetails() {
-            const url = `${Config.API_ROOT}movie/${id}?api_key=${Config.API_KEY}`;
+            const url = `${Config.API_ROOT}${media_type}/${id}?api_key=${Config.API_KEY}`;
             await axios.get(url).then((response) => {
-                dispatch({
-                    type: 'ADD_MOVIE_DETAILS',
-                    payload: response.data
-                })
+                console.log("fetchDataMovieDetails", response.data)
+                if (response) {
+                    dispatch({
+                        type: 'ADD_MOVIE_DETAILS',
+                        payload: response.data
+                    })
+                }
             })
         }
         
         async function fetchDataTrailer() {
-            const urlTrailer = `${Config.API_ROOT}movie/${id}/videos?api_key=${Config.API_KEY}`;
+            const urlTrailer = `${Config.API_ROOT}${media_type}/${id}/videos?api_key=${Config.API_KEY}`;
             await axios.get(urlTrailer).then((responseTrailer) => {
-                dispatch({
-                    type: 'ADD_TRAILER',
-                    payload: responseTrailer.data.results[0]
-                })
+                console.log("fetchDataTrailer", responseTrailer)
+                if (responseTrailer) {
+                    dispatch({
+                        type: 'ADD_TRAILER',
+                        payload: responseTrailer.data.results[0]
+                    })
+                }
             })
         }
 
         async function fetchDataActors() {
-            const urlActors = `${Config.API_ROOT}movie/${id}/casts?api_key=${Config.API_KEY}`;
+            let urlActors = ""
+            if (media_type === "tv" ) {
+                urlActors = `${Config.API_ROOT}tv/${id}/credits?api_key=${Config.API_KEY}`;
+            } else {
+                urlActors = `${Config.API_ROOT}${media_type}/${id}/casts?api_key=${Config.API_KEY}`;
+            }
             await axios.get(urlActors).then((responseActors) => {
-                console.log("cast :", responseActors.data)
-                dispatch({
-                    type: 'ADD_ACTORS',
-                    payload: responseActors.data.cast
-                })
+                console.log("fetchDataActors", responseActors)
+                if (responseActors) {
+                    dispatch({
+                        type: 'ADD_ACTORS',
+                        payload: responseActors.data.cast
+                    })
+                }
             })
         }
 
@@ -51,7 +64,7 @@ export default function MovieDetails() {
         fetchDataTrailer()
         fetchDataActors()
 
-    }, [id, dispatch])
+    }, [id, dispatch, media_type])
 
     console.log("movieDetails :", movieDetails)
 
@@ -75,28 +88,58 @@ export default function MovieDetails() {
                         <img className="poster" src={`${Config.IMG_ROOT}${movieDetails.poster_path}`} alt={movieDetails.title} />
                     </div>
                     <div className="subcontainer-details">
-                        <h1 className="lemon">{movieDetails.title}</h1>
+                        <h1 className="lemon">
+                            {media_type === "movie" ?
+                                movieDetails.title : movieDetails.name
+                            }
+                        </h1>
                         <h3 className="tagline">{movieDetails.tagline}</h3>
                         <div className="movie-details">
                             {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}>{genre.name}</div>)}
                             </div>
                             <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
                             <div className="flex">
-                                <h4 className="subtitle lemon margin-right">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                                {movieDetails.release_date ?
+                                    <h4 className="subtitle lemon margin-right">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                                    : null
+                                }
+                                {movieDetails.first_air_date ?
+                                    <h4 className="subtitle lemon margin-right">First air date: <span className="bold-normal">{movieDetails.first_air_date}</span></h4>
+                                    : null
+                                }
+                                {movieDetails.last_air_date ?
+                                    <h4 className="subtitle lemon margin-right">Last air date: <span className="bold-normal">{movieDetails.last_air_date}</span></h4>
+                                    : null
+                                }
                                 <h4 className="subtitle lemon margin-right">Status : <span className="bold-normal">{movieDetails.status}</span></h4>
-                                <div className="subtitle lemon margin-right flex"><img className="img-h4" src={hourglass} alt="Runtime"/>  : <span className="bold-normal"> {runtimeFormat(movieDetails.runtime)}</span></div>
+                                {movieDetails.runtime ?
+                                    <div className="subtitle lemon margin-right flex"><img className="img-h4" src={hourglass} alt="Runtime"/>  : <span className="bold-normal"> {runtimeFormat(movieDetails.runtime)}</span></div>
+                                    : null
+                                }
+                                {movieDetails.number_of_seasons ?
+                                    <h4 className="subtitle lemon margin-right">Season(s) : <span className="bold-normal">{movieDetails.number_of_seasons}</span></h4>
+                                    :null
+                                }
+                                {movieDetails.number_of_episodes ?
+                                    <h4 className="subtitle lemon margin-right">Episode(s) : <span className="bold-normal">{movieDetails.number_of_episodes}</span></h4>
+                                    :null
+                                }
                             </div>
                             <div className="flex">
-                                <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">$ {movieDetails.budget}</span></h4>
-                                <h4 className="subtitle lemon">Revenue : <span className="bold-normal">$ {movieDetails.revenue}</span></h4>
+                                {movieDetails.budget ?
+                                    movieDetails.budget !== 0 ?
+                                    <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">$ {movieDetails.budget}</span></h4>
+                                    : null : null
+                                }
+                                {movieDetails.revenue ?
+                                    movieDetails.revenue !== 0 ?
+                                    <h4 className="subtitle lemon">Revenue : <span className="bold-normal">$ {movieDetails.revenue}</span></h4>
+                                    : null : null
+                                }
                             </div>                            
-                            {movieDetails.homepage !== null ? 
-                                (
-                                    <>
-                                        <h4 className="subtitle lemon">Homepage : <span className="bold-normal"><a className="font-size-1" href={movieDetails.homepage}>{movieDetails.homepage}</a></span></h4>
-                                        
-                                    </>
-                                ):null
+                            {movieDetails.homepage ?
+                                <h4 className="subtitle lemon">Homepage : <span className="bold-normal"><a className="font-size-1" href={movieDetails.homepage}>{movieDetails.homepage}</a></span></h4>
+                                :null
                             }
                             {trailer.id === undefined ? '' : 
                                 <Modal 

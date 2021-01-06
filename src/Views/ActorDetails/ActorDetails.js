@@ -48,20 +48,23 @@ export default function ActorDetails() {
             <div className="container-image">
                 <div className="calque">
                     <div className="subcontainer-poster">
-                        <img className="poster" src={`${Config.IMG_ROOT}${actorDetails.profile_path}`} alt={actorDetails.name} />
+                        {actorDetails.profile_path ? 
+                            <img className="poster" src={`${Config.IMG_ROOT}${actorDetails.profile_path}`} alt={actorDetails.name} />
+                            : null
+                        }
+                        
                     </div>
                     <div className="subcontainer-details">
-                        <h1>{actorDetails.name}</h1>
+                        <h1 className="lemon">{actorDetails.name}</h1>
                         <p className="tagline">{actorDetails.biography}</p>
                         <div className="details">
-                            <h4 className="subtitle">Birthday : <span className="bold-normal">{actorDetails.birthday}</span></h4>
-                            {actorDetails.homepage !== null ? 
-                                (
-                                    <>
-                                        <h4 className="subtitle">Homepage : <span className="bold-normal"><a className="font-size-1" href={actorDetails.homepage}>{actorDetails.homepage}</a></span></h4>
-                                        
-                                    </>
-                                ):null
+                            {actorDetails.birthday ?
+                                <h4 className="subtitle">Birthday : <span className="bold-normal">{actorDetails.birthday}</span></h4>
+                                : null
+                            }
+                            {actorDetails.homepage ? 
+                                <h4 className="subtitle">Homepage : <span className="bold-normal"><a className="font-size-1" href={actorDetails.homepage}>{actorDetails.homepage}</a></span></h4>
+                                :null
                             }
                         </div>
                     </div>
