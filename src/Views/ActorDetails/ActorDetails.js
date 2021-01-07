@@ -9,7 +9,7 @@ import '../MovieDetails/MovieDetails.scss'
 export default function ActorDetails() {
 
     const { id } = useParams()
-    const { actorDetails, actorMoviesList } = useSelector(state => ({ ...state.actorDetailsReducer }))
+    const { actorDetails, actorMoviesList, actorTvList } = useSelector(state => ({ ...state.actorDetailsReducer }))
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -34,8 +34,19 @@ export default function ActorDetails() {
             })
         }
 
+        async function fetchDataTvList() {
+            const url = `${Config.API_ROOT}person/${id}/tv_credits?api_key=${Config.API_KEY}`;
+            await axios.get(url).then((responseTvList) => {
+                dispatch({
+                    type: 'ADD_ACTOR_TV_LIST',
+                    payload: responseTvList.data.cast
+                })
+            })
+        }
+
         fetchDataActorDetails()
         fetchDataMoviesList()
+        fetchDataTvList()
 
     }, [id, dispatch])
 
@@ -81,6 +92,21 @@ export default function ActorDetails() {
                     ))}
                 </div>
             </div>
+            {actorTvList ?
+                (<div>
+                    <h2 className="title">TV</h2>
+                    <div className="container-cards">
+                        {actorTvList.map((actorMovie) => (
+                            <Card 
+                                actorMovie={actorMovie}
+                                key={actorMovie.id}
+                            />
+                        ))}
+                    </div>
+                </div>
+                ) : null
+            }
+            
         </div>
     )
 }
