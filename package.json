@@ -2,7 +2,7 @@
   "name": "moovice_hooks_redux",
   "version": "0.1.0",
   "private": true,  
-  "homepage" : "https://julie-desvaux.github.io/Moovice_Hooks_Redux",
+  "homepage" : "https://julie-desvaux.github.io/Moovice_Hooks_Redux/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
@@ -26,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build&&gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
