@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import Config from '../../Config'
 import Card from '../../Components/Card/Card'
@@ -10,7 +10,7 @@ export default function ListSearch() {
     const { search } = useParams()
     // const { searchList } = useSelector(state => ({ ...state.searchList }))
     const [ searchList, setSearchList ] = useState(null)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     useEffect(() => {
 
@@ -26,7 +26,7 @@ export default function ListSearch() {
         }
         fetchDataSearch()
 
-    }, [search, dispatch])
+    }, [search])
 
     console.log("searchList", searchList)
 

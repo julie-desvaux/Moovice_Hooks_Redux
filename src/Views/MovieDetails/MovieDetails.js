@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import Config from '../../Config'
 import Modal from '../../Components/Modal/Modal'
@@ -51,7 +51,7 @@ export default function MovieDetails() {
             }
             await axios.get(urlActors).then((responseActors) => {
                 console.log("fetchDataActors", responseActors)
-                if (responseActors) {
+                if (responseActors.data) {
                     dispatch({
                         type: 'ADD_ACTORS',
                         payload: responseActors.data.cast
@@ -67,6 +67,10 @@ export default function MovieDetails() {
     }, [id, dispatch, media_type])
 
     console.log("movieDetails :", movieDetails)
+
+    const convertFormatMoney = (money) => {
+       return new Intl.NumberFormat('us-US', { style: 'currency', currency: 'USD' }).format(money)
+    }
 
     const runtimeFormat = (runtime) => {
         let reste = runtime;
@@ -95,7 +99,7 @@ export default function MovieDetails() {
                         </h1>
                         <h3 className="tagline">{movieDetails.tagline}</h3>
                         <div className="movie-details">
-                            {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}>{genre.name}</div>)}
+                            {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}><Link className="movie-genre-item" to={{pathname: `/genre/${media_type}/${genre.name}/${genre.id}`}}>{genre.name}</Link></div>)}
                             </div>
                             <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
                             <div className="flex">
@@ -104,11 +108,11 @@ export default function MovieDetails() {
                                     : null
                                 }
                                 {movieDetails.first_air_date ?
-                                    <h4 className="subtitle lemon margin-right">First air date: <span className="bold-normal">{movieDetails.first_air_date}</span></h4>
+                                    <h4 className="subtitle lemon margin-right">First air date: <br/><span className="bold-normal">{movieDetails.first_air_date}</span></h4>
                                     : null
                                 }
                                 {movieDetails.last_air_date ?
-                                    <h4 className="subtitle lemon margin-right">Last air date: <span className="bold-normal">{movieDetails.last_air_date}</span></h4>
+                                    <h4 className="subtitle lemon margin-right">Last air date: <br/><span className="bold-normal">{movieDetails.last_air_date}</span></h4>
                                     : null
                                 }
                                 <h4 className="subtitle lemon margin-right">Status : <span className="bold-normal">{movieDetails.status}</span></h4>
@@ -128,12 +132,12 @@ export default function MovieDetails() {
                             <div className="flex">
                                 {movieDetails.budget ?
                                     movieDetails.budget !== 0 ?
-                                    <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">$ {movieDetails.budget}</span></h4>
+                                    <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">{convertFormatMoney(movieDetails.budget)}</span></h4>
                                     : null : null
                                 }
                                 {movieDetails.revenue ?
                                     movieDetails.revenue !== 0 ?
-                                    <h4 className="subtitle lemon">Revenue : <span className="bold-normal">$ {movieDetails.revenue}</span></h4>
+                                    <h4 className="subtitle lemon">Revenue : <span className="bold-normal">{convertFormatMoney(movieDetails.revenue)}</span></h4>
                                     : null : null
                                 }
                             </div>                            

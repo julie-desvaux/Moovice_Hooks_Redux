@@ -9,6 +9,7 @@ import Discover from './Views/Discover/Discover'
 import Popular from './Views/Popular/Popular'
 import MovieDetails from './Views/MovieDetails/MovieDetails'
 import ListSearch from './Views/ListSearch/ListSearch'
+import ListGenre from './Views/ListGenre/ListGenre'
 import ActorDetails from './Views/ActorDetails/ActorDetails'
 import NotFound from './Views/NotFound/NotFound'
 
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path="/popular">
           <Popular />
+        </Route>
+        <Route exact path="/genre/:media_type/:genre/:id">
+          <ListGenre />
         </Route>
         <Route exact path="/search/:search">
           <ListSearch />
