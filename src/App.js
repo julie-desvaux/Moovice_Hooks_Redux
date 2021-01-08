@@ -10,6 +10,7 @@ import Popular from './Views/Popular/Popular'
 import MovieDetails from './Views/MovieDetails/MovieDetails'
 import ListSearch from './Views/ListSearch/ListSearch'
 import ActorDetails from './Views/ActorDetails/ActorDetails'
+import NotFound from './Views/NotFound/NotFound'
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route exact path="/:media_type/:id">
           <MovieDetails />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </Router>

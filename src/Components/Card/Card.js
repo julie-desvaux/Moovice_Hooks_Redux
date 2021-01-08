@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Scroll from 'react-scroll'
+import { Link } from 'react-router-dom'
 import Config from '../../Config'
 import placeholder from '../../Assets/placeholder.png'
 import picture0 from '../../Assets/picture0.png'
@@ -10,6 +11,9 @@ import './Card.scss'
 export default function Cards(props) {
 
     const { movie, actor, actorMovie } = props;
+    const url = window.location.href
+
+    console.log(url)
 
     if (actor) {
         return (
@@ -19,18 +23,18 @@ export default function Cards(props) {
                     <h3 className="card-title">{actor.name}</h3>
                     <h4>Character :</h4>
                     <p className="card-txt">{actor.character}</p>
-                    <a
+                    <Link
                         className="link"
-                        // onClick={Scroll.scroller.scrollTo("container", {
-                        //     duration: 150,
-                        //     delay: 100,
-                        //     smooth: true,
-                        //     offset: -500,
-                        // })}
-                        href={`/actor/${actor.id}`}
+                        onClick={Scroll.scroller.scrollTo("container", {
+                            duration: 150,
+                            delay: 100,
+                            smooth: true,
+                            offset: -500,
+                        })}
+                        to={{pathname: `/actor/${actor.id}`}}
                     >
                         <div className="card-btn">Go details</div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )
@@ -62,7 +66,7 @@ export default function Cards(props) {
                         </>
                         : null
                     }
-                    <a
+                    <Link
                         className="link"
                         onClick={Scroll.scroller.scrollTo("container", {
                             duration: 150,
@@ -70,10 +74,10 @@ export default function Cards(props) {
                             smooth: true,
                             offset: -500,
                         })}
-                        href={movie.media_type ? movie.media_type !== "person" ? `/${movie.media_type}/${movie.id}` : `/actor/${movie.id}` : `/movie/${movie.id}`}
+                        to={{pathname: movie.media_type ? movie.media_type !== "person" ? `/${movie.media_type}/${movie.id}` : `/actor/${movie.id}` : `/movie/${movie.id}`}}
                     >
                         <div className="card-btn">Go details</div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )
@@ -87,7 +91,7 @@ export default function Cards(props) {
                     <h3 className="card-title">{actorMovie.title}</h3>
                     <h4>Character :</h4>
                     <p className="card-txt">{actorMovie.character}</p>
-                    <a
+                    <Link
                         className="link"
                         onClick={Scroll.scroller.scrollTo("container", {
                             duration: 150,
@@ -95,10 +99,11 @@ export default function Cards(props) {
                             smooth: true,
                             offset: -500,
                         })}
-                        href={`/movie/${actorMovie.id}`}
+                        
+                        to={{pathname: `/movie/${actorMovie.id}`}}
                     >
                         <div className="card-btn">Go details</div>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )

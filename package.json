@@ -1,8 +1,8 @@
 {
   "name": "moovice_hooks_redux",
   "version": "0.1.0",
-  "private": true,  
-  "homepage" : "https://julie-desvaux.github.io/Moovice_Hooks_Redux/",
+  "private": true,
+  "homepage" : "https://moovice.julie-desvaux.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
