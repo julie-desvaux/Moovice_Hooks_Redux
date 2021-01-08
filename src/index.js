@@ -8,10 +8,12 @@ import popularReducer from './Reducers/popularReducer'
 import movieDetailsReducer from './Reducers/movieDetailsReducer'
 import searchTextReducer from './Reducers/searchTextReducer'
 import actorDetailsReducer from './Reducers/actorDetailsReducer'
+import favoriteReducer from './Reducers/favoriteReducer'
 import './index.scss';
 
 const rootReducer = combineReducers({
-  discoverReducer,
+  discoverReducer,  
+  favoriteReducer,
   popularReducer,
   movieDetailsReducer,
   searchTextReducer,
