@@ -85,8 +85,9 @@ export default function ActorDetails() {
                 <h2 className="title">Filmography</h2>
                 <div className="container-cards">
                     {actorMoviesList.map((actorMovie) => (
-                        <Card 
-                            actorMovie={actorMovie}
+                        <Card
+                            media_type="movie"
+                            item={actorMovie}
                             key={actorMovie.id + actorMovie.title}
                         />
                     ))}
@@ -98,7 +99,8 @@ export default function ActorDetails() {
                     <div className="container-cards">
                         {actorTvList.map((actorTv) => (
                             <Card 
-                                actorMovie={actorTv}
+                                media_type="tv"
+                                item={actorTv}
                                 key={actorTv.id + actorTv.name}
                             />
                         ))}

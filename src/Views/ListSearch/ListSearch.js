@@ -30,10 +30,11 @@ export default function ListSearch() {
         <div className="container">
             <h1 className="title">Result for : {search}</h1>
             <div className="container-cards">
-                {searchList.map((searchMovie) => (
-                    <Card 
-                        movie={searchMovie}
-                        key={searchMovie.id}
+                {searchList.map((searchItem, index) => (
+                    <Card
+                        media_type={searchItem.media_type}
+                        item={searchItem}
+                        key={searchItem.id}
                     />
                 ))}
             </div>

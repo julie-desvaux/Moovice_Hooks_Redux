@@ -154,7 +154,8 @@ export default function MovieDetails() {
                 <div className="container-cards">
                     {actors.map((actor) => (
                         <Card 
-                            actor={actor}
+                            media_type="person"
+                            item={actor}
                             key={actor.id}
                         />
                     ))}

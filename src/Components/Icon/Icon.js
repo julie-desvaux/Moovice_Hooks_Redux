@@ -8,12 +8,16 @@ export default function Icon({ id, media_type }) {
     const [icon, setIcon] = useState("favorite_border")
 
     useEffect(() => {
+
         let myList = localStorage.getItem('myList');
         myList = JSON.parse(myList);
+
         const index = lodash.findIndex(myList, function(o) { return (o.id === id && o.media_type === media_type) });
+        console.log("index", index)
         if (index !== -1) {
             setIcon("favorite")
         }
+
     }, [id, media_type])
 
     const handleAddFavorite = (id, media_type) => {

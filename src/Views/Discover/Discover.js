@@ -35,7 +35,8 @@ export default function Discover() {
             <div className="container-cards">
                 {discover.map((movie) => (
                     <Card 
-                        movie={movie}
+                        media_type="movie"
+                        item={movie}
                         key={movie.id}
                     />
                 ))}

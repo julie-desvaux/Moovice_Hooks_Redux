@@ -25,16 +25,16 @@ function App() {
         <Route exact path="/popular">
           <Popular />
         </Route>
-        <Route exact path="/my-list">
+        {/* <Route exact path="/my-list">
           <MyList />
-        </Route>
+        </Route> */}
         <Route exact path="/genre/:media_type/:genre/:id">
           <ListGenre />
         </Route>
         <Route exact path="/search/:search">
           <ListSearch />
         </Route>
-        <Route exact path="/actor/:id">
+        <Route exact path="/person/:id">
           <ActorDetails />
         </Route>
         <Route exact path="/:media_type/:id">

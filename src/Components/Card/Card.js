@@ -8,7 +8,7 @@ import picture1 from '../../Assets/picture1.png'
 import picture2 from '../../Assets/picture2.png'
 import './Card.scss'
 
-export default function Cards({ movie, actor, actorMovie }) {
+export default function Cards({ movie, item, actorMovie, media_type }) {
 
     const clickScrollTop = (e) => {
         if (e.target.className !== "card-btn") {
@@ -21,22 +21,22 @@ export default function Cards({ movie, actor, actorMovie }) {
         }
     }
 
-    if (actor) {
+    if (media_type === "person") {
         return (
             <div className="card">
                 <Icon 
-                    id={actor.id}
-                    media_type="actor"
+                    id={item.id}
+                    media_type={media_type}
                 />
-                <img src={actor.profile_path ? `${Config.IMG_ACTOR_ROOT}${actor.profile_path}` : actor.gender === 0 ? picture0 : actor.gender === 1 ? picture1 : picture2} alt={`Poster of ${actor.name}`} className="card-image"/>
+                <img src={item.profile_path ? `${Config.IMG_ACTOR_ROOT}${item.profile_path}` : item.gender === 0 ? picture0 : item.gender === 1 ? picture1 : picture2} alt={`Poster of ${item.name}`} className="card-image"/>
                 <div className="card-body">
-                    <h3 className="card-title">{actor.name}</h3>
+                    <h3 className="card-title">{item.name}</h3>
                     <h4>Character :</h4>
-                    <p className="card-txt">{actor.character}</p>
+                    <p className="card-txt">{item.character}</p>
                     <Link
                         className="link"
                         onClick={(e) => clickScrollTop(e)}
-                        to={{pathname: `/actor/${actor.id}`}}
+                        to={{pathname: `/person/${item.id}`}}
                     >
                         <div className="card-btn">Go details</div>
                     </Link>
@@ -45,40 +45,35 @@ export default function Cards({ movie, actor, actorMovie }) {
         )
     }
 
-    if (movie) {
+    if (media_type === "movie") {
+        console.log("item movie", item)
         return (
             <div className="card">        
                 <Icon 
-                    id={movie.id}
-                    media_type={movie.media_type === "movie" ? "movie" : movie.media_type === "tv" ? "tv" : "person"}
+                    id={item.id}
+                    media_type={media_type}
                 />
                 <img 
-                    src={movie.poster_path ? 
-                        `${Config.IMG_ROOT}${movie.poster_path}` 
-                        : movie.name ? movie.profile_path ? `${Config.IMG_ACTOR_ROOT}${movie.profile_path}` : picture0 : placeholder} 
-                    alt={movie.poster_path ? 
-                        `Poster of ${movie.title}` 
-                        : movie.name ? `Picture of ${movie.name}` : `Poster of DVD`} 
+                    src={item.poster_path ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} 
+                    alt={item.poster_path ? `Poster of ${item.title}` : `Poster of DVD`} 
                     className="card-image"
                 />
                 <div className="card-body">
-                    {movie.title ?
-                        <h3 className="card-title">{movie.title}</h3>
-                        : movie.name ?
-                            <h3 className="card-title">{movie.name}</h3>
-                            : null
+                    {item.title ?
+                        <h3 className="card-title">{item.title}</h3>
+                        : null
                     }
-                    {movie.release_date ?
+                    {item.release_date ?
                         <>
                             <h4>Release date :</h4>
-                            <p className="card-txt">{movie.release_date}</p>
+                            <p className="card-txt">{item.release_date}</p>
                         </>
                         : null
                     }
                     <Link
                         className="link"
                         onClick={(e) => clickScrollTop(e)}
-                        to={{pathname: movie.media_type ? movie.media_type !== "person" ? `/${movie.media_type}/${movie.id}` : `/actor/${movie.id}` : `/movie/${movie.id}`}}
+                        to={{pathname: `/${media_type}/${item.id}`}}
                     >
                         <div className="card-btn">Go details</div>
                     </Link>
@@ -87,22 +82,22 @@ export default function Cards({ movie, actor, actorMovie }) {
         )
     }
 
-    if (actorMovie) {
+    if (media_type === "tv") {
         return (
             <div className="card">
                 <Icon 
-                    id={actorMovie.id}
-                    media_type={actorMovie.title ? "movie" : "tv"}
+                    id={item.id}
+                    media_type={item.title}
                 />
-                <img src={actorMovie.poster_path !== null ? `${Config.IMG_ROOT}${actorMovie.poster_path}` : placeholder} alt={actorMovie.poster_path !== null ? `Poster of ${actorMovie.title}` : `Poster of DVD`} className="card-image"/>
+                <img src={item.poster_path !== null ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} alt={item.poster_path !== null ? `Poster of ${item.title}` : `Poster of DVD`} className="card-image"/>
                 <div className="card-body">
-                    <h3 className="card-title">{actorMovie.title}</h3>
-                    <h4>Character :</h4>
-                    <p className="card-txt">{actorMovie.character}</p>
+                    <h3 className="card-title">{item.title}</h3>
+                    {/* <h4>Character :</h4>
+                    <p className="card-txt">{item.character}</p> */}
                     <Link
                         className="link"
                         onClick={(e) => clickScrollTop(e)}
-                        to={{pathname: `/movie/${actorMovie.id}`}}
+                        to={{pathname: `/${media_type}/${item.id}`}}
                     >
                         <div className="card-btn">Go details</div>
                     </Link>

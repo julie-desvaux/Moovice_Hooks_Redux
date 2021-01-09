@@ -61,20 +61,25 @@ export default function NavBar() {
                                 Moovice
                             </Link>
                         </li>
-                        <li onClick={hideMenu} className="linksNav">
-                            <Link className="link" to="/">
-                                This Week
-                            </Link>
-                        </li>
-                        <li onClick={hideMenu} className="linksNav">
-                            <Link className="link" to="/popular">
-                                Popular
-                            </Link>   
-                        </li>
-                        <li onClick={hideMenu} className="linksNav">
-                            <Link className="link" to="/my-list">
-                                My List
-                            </Link>   
+                        <li className="linksNav">
+                            Movies
+                            <ul className="sub-menu">    
+                                <li onClick={hideMenu} className="linksNav">
+                                    <Link className="link" to="/">
+                                        This Week
+                                    </Link>
+                                </li>
+                                <li onClick={hideMenu} className="linksNav">
+                                    <Link className="link" to="/popular">
+                                        Popular
+                                    </Link>   
+                                </li>
+                                <li onClick={hideMenu} className="linksNav">
+                                    <Link className="link" to="/my-list">
+                                        My List
+                                    </Link>   
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <ul className="listMenu search-bar">

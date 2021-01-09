@@ -35,7 +35,8 @@ export default function Popular() {
                 {popular.map((movie) => {
                     return(
                         <Card 
-                            movie={movie}
+                            media_type="movie"
+                            item={movie}
                             key={movie.id}
                         />
                         )
