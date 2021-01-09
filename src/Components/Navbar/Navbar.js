@@ -72,7 +72,7 @@ export default function NavBar() {
                             </Link>   
                         </li>
                         <li onClick={hideMenu} className="linksNav">
-                            <Link className="link" to="/my_list">
+                            <Link className="link" to="/my-list">
                                 My List
                             </Link>   
                         </li>

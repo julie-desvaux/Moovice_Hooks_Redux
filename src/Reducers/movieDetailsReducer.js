@@ -1,4 +1,4 @@
-const movieDetailsReducer = (state = { movieDetails: "", trailer: "", actors: "", moviesGenre: [] }, action) => {
+const movieDetailsReducer = (state = { movieDetails: "", trailer: "", actors: "", moviesGenre: [], favorites: [] }, action) => {
 
     switch (action.type) {
         case 'ADD_MOVIE_DETAILS' :

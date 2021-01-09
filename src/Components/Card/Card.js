@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import * as Scroll from 'react-scroll'
-// import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Config from '../../Config'
 import Icon from '../Icon/Icon'
@@ -10,22 +8,7 @@ import picture1 from '../../Assets/picture1.png'
 import picture2 from '../../Assets/picture2.png'
 import './Card.scss'
 
-export default function Cards(props) {
-
-    const { movie, actor, actorMovie } = props;
-    const url = window.location.href
-
-    // const { icon } = useSelector(state => state.icon)
-    const [icon, setIcon] = useState("favorite_border")
-
-    const handleAddFavorite = (id) => {
-        console.log("click:", id)
-        if (icon === "favorite_border") {
-            setIcon("favorite")
-        } else {
-            setIcon("favorite_border")
-        }
-    }
+export default function Cards({ movie, actor, actorMovie }) {
 
     const clickScrollTop = (e) => {
         if (e.target.className !== "card-btn") {
@@ -43,8 +26,7 @@ export default function Cards(props) {
             <div className="card">
                 <Icon 
                     id={actor.id}
-                    icon="favorite_border"
-                    onClick={handleAddFavorite}
+                    media_type="actor"
                 />
                 <img src={actor.profile_path ? `${Config.IMG_ACTOR_ROOT}${actor.profile_path}` : actor.gender === 0 ? picture0 : actor.gender === 1 ? picture1 : picture2} alt={`Poster of ${actor.name}`} className="card-image"/>
                 <div className="card-body">
@@ -68,8 +50,7 @@ export default function Cards(props) {
             <div className="card">        
                 <Icon 
                     id={movie.id}
-                    icon={icon}
-                    onClick={handleAddFavorite}
+                    media_type={movie.media_type === "movie" ? "movie" : movie.media_type === "tv" ? "tv" : "person"}
                 />
                 <img 
                     src={movie.poster_path ? 
@@ -111,8 +92,7 @@ export default function Cards(props) {
             <div className="card">
                 <Icon 
                     id={actorMovie.id}
-                    icon="favorite_border"
-                    onClick={handleAddFavorite}
+                    media_type={actorMovie.title ? "movie" : "tv"}
                 />
                 <img src={actorMovie.poster_path !== null ? `${Config.IMG_ROOT}${actorMovie.poster_path}` : placeholder} alt={actorMovie.poster_path !== null ? `Poster of ${actorMovie.title}` : `Poster of DVD`} className="card-image"/>
                 <div className="card-body">

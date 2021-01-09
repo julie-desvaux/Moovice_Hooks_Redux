@@ -19,7 +19,6 @@ export default function MovieDetails() {
         async function fetchDataMovieDetails() {
             const url = `${Config.API_ROOT}${media_type}/${id}?api_key=${Config.API_KEY}`;
             await axios.get(url).then((response) => {
-                console.log("fetchDataMovieDetails", response.data)
                 if (response) {
                     dispatch({
                         type: 'ADD_MOVIE_DETAILS',
@@ -32,7 +31,6 @@ export default function MovieDetails() {
         async function fetchDataTrailer() {
             const urlTrailer = `${Config.API_ROOT}${media_type}/${id}/videos?api_key=${Config.API_KEY}`;
             await axios.get(urlTrailer).then((responseTrailer) => {
-                console.log("fetchDataTrailer", responseTrailer)
                 if (responseTrailer) {
                     dispatch({
                         type: 'ADD_TRAILER',
@@ -50,7 +48,6 @@ export default function MovieDetails() {
                 urlActors = `${Config.API_ROOT}${media_type}/${id}/casts?api_key=${Config.API_KEY}`;
             }
             await axios.get(urlActors).then((responseActors) => {
-                console.log("fetchDataActors", responseActors)
                 if (responseActors.data) {
                     dispatch({
                         type: 'ADD_ACTORS',
@@ -65,8 +62,6 @@ export default function MovieDetails() {
         fetchDataActors()
 
     }, [id, dispatch, media_type])
-
-    console.log("movieDetails :", movieDetails)
 
     const convertFormatMoney = (money) => {
        return new Intl.NumberFormat('us-US', { style: 'currency', currency: 'USD' }).format(money)
