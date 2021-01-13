@@ -3,7 +3,7 @@ import './Icon.scss'
 
 const lodash = require('lodash')
 
-export default function Icon({ id, media_type }) {
+export default function Icon({ id, media_type, item }) {
 
     const [icon, setIcon] = useState("favorite_border")
 
@@ -13,7 +13,6 @@ export default function Icon({ id, media_type }) {
         myList = JSON.parse(myList);
 
         const index = lodash.findIndex(myList, function(o) { return (o.id === id && o.media_type === media_type) });
-        console.log("index", index)
         if (index !== -1) {
             setIcon("favorite")
         }
@@ -27,9 +26,31 @@ export default function Icon({ id, media_type }) {
             if (myList === null) {
                 myList = []
             }
-            const favoriteTemp = {
-                id,
-                media_type
+            let favoriteTemp = {}
+            if (media_type === "person") {
+                favoriteTemp = {
+                    id,
+                    media_type,
+                    profile_path: item.profile_path, 
+                    gender: item.gender,
+                    name: item.name,
+                    character: item.character
+                }
+            } else if (media_type === "movie") {
+                favoriteTemp = {
+                    id,
+                    media_type,
+                    poster_path: item.poster_path,
+                    title: item.title,
+                    release_date: item.release_date
+                }
+            } else if (media_type === "tv") {
+                favoriteTemp = {
+                    id,
+                    media_type,
+                    poster_path: item.poster_path,
+                    name: item.name
+                }
             }
             myList.push(favoriteTemp)
             localStorage.setItem("myList", JSON.stringify(myList))

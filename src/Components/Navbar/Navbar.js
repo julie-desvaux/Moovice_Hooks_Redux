@@ -97,7 +97,7 @@ export default function NavBar() {
                         </li>
                         <li onClick={hideMenu} className="linksNav">
                             <Button>
-                                <Link className="link" to="/my_list">
+                                <Link className="link" to="/my-list">
                                     My List
                                 </Link>
                             </Button>

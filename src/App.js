@@ -25,9 +25,9 @@ function App() {
         <Route exact path="/popular">
           <Popular />
         </Route>
-        {/* <Route exact path="/my-list">
+        <Route exact path="/my-list">
           <MyList />
-        </Route> */}
+        </Route>
         <Route exact path="/genre/:media_type/:genre/:id">
           <ListGenre />
         </Route>

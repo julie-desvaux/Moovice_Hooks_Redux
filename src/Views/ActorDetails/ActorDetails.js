@@ -50,6 +50,8 @@ export default function ActorDetails() {
 
     }, [id, dispatch])
 
+    console.log(actorDetails)
+
     if (!actorDetails || !actorMoviesList) {
         return null
     }
@@ -68,13 +70,23 @@ export default function ActorDetails() {
                     <div className="subcontainer-details">
                         <h1 className="lemon">{actorDetails.name}</h1>
                         <p className="tagline">{actorDetails.biography}</p>
-                        <div className="details">
+                        <div className="flex">
                             {actorDetails.birthday ?
-                                <h4 className="subtitle">Birthday : <span className="bold-normal">{actorDetails.birthday}</span></h4>
+                                <h4 className="subtitle lemon margin-right">Birthday : <span className="bold-normal">{actorDetails.birthday}</span></h4>
                                 : null
                             }
+                            {actorDetails.place_of_birth ?
+                                <h4 className="subtitle lemon margin-right">Place of birth : <span className="bold-normal">{actorDetails.place_of_birth}</span></h4>
+                                : null
+                            }
+                            {actorDetails.deathday ?
+                                <h4 className="subtitle lemon margin-right">Death day : <span className="bold-normal">{actorDetails.deathday}</span></h4>
+                                : null
+                            }
+                        </div>
+                        <div className="flex">
                             {actorDetails.homepage ? 
-                                <h4 className="subtitle">Homepage : <span className="bold-normal"><a className="font-size-1" href={actorDetails.homepage}>{actorDetails.homepage}</a></span></h4>
+                                <h4 className="subtitle lemon margin-right">Homepage : <span className="bold-normal"><a className="font-size-1" href={actorDetails.homepage}>{actorDetails.homepage}</a></span></h4>
                                 :null
                             }
                         </div>

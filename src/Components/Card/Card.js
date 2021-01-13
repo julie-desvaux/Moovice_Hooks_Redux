@@ -8,7 +8,7 @@ import picture1 from '../../Assets/picture1.png'
 import picture2 from '../../Assets/picture2.png'
 import './Card.scss'
 
-export default function Cards({ movie, item, actorMovie, media_type }) {
+export default function Cards({ item, media_type }) {
 
     const clickScrollTop = (e) => {
         if (e.target.className !== "card-btn") {
@@ -27,12 +27,19 @@ export default function Cards({ movie, item, actorMovie, media_type }) {
                 <Icon 
                     id={item.id}
                     media_type={media_type}
+                    item={item}
                 />
                 <img src={item.profile_path ? `${Config.IMG_ACTOR_ROOT}${item.profile_path}` : item.gender === 0 ? picture0 : item.gender === 1 ? picture1 : picture2} alt={`Poster of ${item.name}`} className="card-image"/>
                 <div className="card-body">
                     <h3 className="card-title">{item.name}</h3>
-                    <h4>Character :</h4>
-                    <p className="card-txt">{item.character}</p>
+                    {item.character ? 
+                        (
+                            <>
+                                <h4>Character :</h4>
+                                <p className="card-txt">{item.character}</p>
+                            </>
+                        ): null
+                    }
                     <Link
                         className="link"
                         onClick={(e) => clickScrollTop(e)}
@@ -46,12 +53,12 @@ export default function Cards({ movie, item, actorMovie, media_type }) {
     }
 
     if (media_type === "movie") {
-        console.log("item movie", item)
         return (
             <div className="card">        
                 <Icon 
                     id={item.id}
                     media_type={media_type}
+                    item={item}
                 />
                 <img 
                     src={item.poster_path ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} 
@@ -87,11 +94,12 @@ export default function Cards({ movie, item, actorMovie, media_type }) {
             <div className="card">
                 <Icon 
                     id={item.id}
-                    media_type={item.title}
+                    media_type={media_type}
+                    item={item}
                 />
-                <img src={item.poster_path !== null ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} alt={item.poster_path !== null ? `Poster of ${item.title}` : `Poster of DVD`} className="card-image"/>
+                <img src={item.poster_path !== null ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} alt={item.poster_path !== null ? `Poster of ${item.name}` : `Poster of DVD`} className="card-image"/>
                 <div className="card-body">
-                    <h3 className="card-title">{item.title}</h3>
+                    <h3 className="card-title">{item.name}</h3>
                     {/* <h4>Character :</h4>
                     <p className="card-txt">{item.character}</p> */}
                     <Link
