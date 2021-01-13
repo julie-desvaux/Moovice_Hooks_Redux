@@ -88,10 +88,10 @@ export default function NavBar() {
                                 onClose={handleClose}
                             >
                                 <MenuItem onClick={handleClose}>
-                                    <Link to="/">This Week</Link>
+                                    <Link className="sublink" to="/">This Week</Link>
                                 </MenuItem>
                                 <MenuItem onClick={handleClose}>
-                                    <Link to="/popular">Popular</Link>
+                                    <Link className="sublink" to="/popular">Popular</Link>
                                 </MenuItem>
                             </Menu>
                         </li>
