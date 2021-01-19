@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import search from '../../Assets/Search.svg'
-import menuIco from '../../Assets/MenuIco.svg'
-import cross from '../../Assets/Cross.svg'
 import './Navbar.scss'
 
 export default function NavBar() {
@@ -38,10 +33,9 @@ export default function NavBar() {
     }
     
     function iconOnClick(event) {
+        console.log("click")
         event.stopPropagation();
-        if (widthSreen > 900 || toggleMenu) {
-            showMenu(!menu);
-        }
+        showMenu(!menu);
     }
 
     const handleSubmit = (e) => {
@@ -56,13 +50,13 @@ export default function NavBar() {
     return (
         <div className="navbar-container">
             <nav className="navbar-subcontainer">
-				<a href="#" className="link link-logo">
-					Moovice
+				<a href="#" className="link-logo">
+					MOOVICE
 				</a>
                 {(widthSreen > 900 || toggleMenu) && (
                     <>
                     <ul className="listMenu">
-                        <div className="item-menu" onClick={(e) => iconOnClick(e)} onClick={toogleNavSmallScreen}>
+                        <div className="item-menu" onClick={(e) => iconOnClick(e)}>
                             <li>MOOVIES</li>
                         </div>
                         {(widthSreen < 900 && toggleMenu) ? (
@@ -79,10 +73,10 @@ export default function NavBar() {
                                 <div className="dropdown-menu">
                                     <ul>
                                         <a href="/">
-                                            <li className="li-dropdown" onClick={toogleNavSmallScreen}>This Week</li>
+                                            <li className="li-dropdown" onClick={toogleNavSmallScreen}>THIS WEEK</li>
                                         </a>
                                         <a href="/popular" onClick={toogleNavSmallScreen}>
-                                            <li className="li-dropdown">Popular</li>
+                                            <li className="li-dropdown">POPULAR</li>
                                         </a>
                                     </ul>
                                 </div>
