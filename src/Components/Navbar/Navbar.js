@@ -50,9 +50,9 @@ export default function NavBar() {
     return (
         <div className="navbar-container">
             <nav className="navbar-subcontainer">
-				<a href="#" className="link-logo">
-					MOOVICE
-				</a>
+                <Link className="link-logo">
+                    MOOVICE
+                </Link>
                 {(widthSreen > 900 || toggleMenu) && (
                     <>
                     <ul className="listMenu">
@@ -61,23 +61,23 @@ export default function NavBar() {
                         </div>
                         {(widthSreen < 900 && toggleMenu) ? (
                             <ul className="sub-menu-mobile">
-                                <a href="/">
+                                <Link to={{pathname: `/`}}>
                                     <li className="li-menu-mobile">THIS WEEK</li>
-                                </a>
-                                <a href="/popular">
+                                </Link>
+                                <Link to={{pathname: `/popular`}}>
                                     <li className="li-menu-mobile">POPULAR</li>
-                                </a>
+                                </Link>
                             </ul>
                         ) : (
                             menu ? (
                                 <div className="dropdown-menu">
                                     <ul>
-                                        <a href="/">
-                                            <li className="li-dropdown" onClick={toogleNavSmallScreen}>THIS WEEK</li>
-                                        </a>
-                                        <a href="/popular" onClick={toogleNavSmallScreen}>
-                                            <li className="li-dropdown">POPULAR</li>
-                                        </a>
+                                        <Link to={{pathname: `/`}}  onClick={toogleNavSmallScreen}>
+                                            <li className="li-dropdown" onClick={(e) => iconOnClick(e)}>THIS WEEK</li>
+                                        </Link>
+                                        <Link to={{pathname: `/popular`}} onClick={toogleNavSmallScreen}>
+                                            <li className="li-dropdown" onClick={(e) => iconOnClick(e)}>POPULAR</li>
+                                        </Link>
                                     </ul>
                                 </div>
                             ) : null
