@@ -61,10 +61,10 @@ export default function NavBar() {
                         </div>
                         {(widthSreen < 900 && toggleMenu) ? (
                             <ul className="sub-menu-mobile">
-                                <Link to={{pathname: `/`}}>
+                                <Link to={{pathname: `/`}}  onClick={toogleNavSmallScreen}>
                                     <li className="li-menu-mobile">THIS WEEK</li>
                                 </Link>
-                                <Link to={{pathname: `/popular`}}>
+                                <Link to={{pathname: `/popular`}} onClick={toogleNavSmallScreen}>
                                     <li className="li-menu-mobile">POPULAR</li>
                                 </Link>
                             </ul>
@@ -72,10 +72,10 @@ export default function NavBar() {
                             menu ? (
                                 <div className="dropdown-menu">
                                     <ul>
-                                        <Link to={{pathname: `/`}}  onClick={toogleNavSmallScreen}>
+                                        <Link to={{pathname: `/`}}>
                                             <li className="li-dropdown" onClick={(e) => iconOnClick(e)}>THIS WEEK</li>
                                         </Link>
-                                        <Link to={{pathname: `/popular`}} onClick={toogleNavSmallScreen}>
+                                        <Link to={{pathname: `/popular`}}>
                                             <li className="li-dropdown" onClick={(e) => iconOnClick(e)}>POPULAR</li>
                                         </Link>
                                     </ul>
@@ -83,9 +83,9 @@ export default function NavBar() {
                             ) : null
                         )}
                         <li onClick={toogleNavSmallScreen} className="linksNav">
-							<a className="link" href="/my-list" onClick={toogleNavSmallScreen}>
-								MY LIST
-							</a>
+                            <Link className="link" to={{pathname: `/my-list`}} onClick={toogleNavSmallScreen}>
+                                MY LIST
+                            </Link>
                         </li>
                     </ul>
                     <ul className="listMenu search-bar">
