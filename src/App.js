@@ -6,8 +6,8 @@ import {
   Switch
 } from 'react-router-dom'
 import NavBar from './Components/Navbar/Navbar'
-import Discover from './Views/Discover/Discover'
-import Popular from './Views/Popular/Popular'
+import MovieDiscover from './Views/Discover/MovieDiscover'
+import MoviePopular from './Views/Popular/MoviePopular'
 import MovieDetails from './Views/MovieDetails/MovieDetails'
 import ListSearch from './Views/ListSearch/ListSearch'
 import ListGenre from './Views/ListGenre/ListGenre'
@@ -21,10 +21,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <Discover />
+          <MovieDiscover />
         </Route>
-        <Route exact path="/popular">
-          <Popular />
+        <Route exact path="/movie-popular">
+          <MoviePopular />
         </Route>
         <Route exact path="/my-list">
           <MyList />

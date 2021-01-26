@@ -50,7 +50,7 @@ export default function NavBar() {
     return (
         <div className="navbar-container">
             <nav className="navbar-subcontainer">
-                <Link className="link-logo">
+                <Link className="link-logo" to="">
                     MOOVICE
                 </Link>
                 {(widthSreen > 900 || toggleMenu) && (
@@ -64,7 +64,7 @@ export default function NavBar() {
                                 <Link to={{pathname: `/`}}  onClick={toogleNavSmallScreen}>
                                     <li className="li-menu-mobile">THIS WEEK</li>
                                 </Link>
-                                <Link to={{pathname: `/popular`}} onClick={toogleNavSmallScreen}>
+                                <Link to={{pathname: `/movie-popular`}} onClick={toogleNavSmallScreen}>
                                     <li className="li-menu-mobile">POPULAR</li>
                                 </Link>
                             </ul>
@@ -107,74 +107,6 @@ export default function NavBar() {
 				<div className="line" onClick={toogleNavSmallScreen}></div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-        // <div className="navbar-container">
-        //     <nav className="navbar-subcontainer">
-        //         {(widthSreen > 900 || toggleMenu) && (
-        //             <>
-        //             <ul className="listMenu">
-        //                 <li onClick={hideMenu} className="linksNav">
-        //                     <Button>
-        //                         <Link className="link" to="/">
-        //                             Moovice
-        //                         </Link>
-        //                     </Button>
-        //                 </li>
-        //                 <li onClick={hideMenu} className="linksNav">
-        //                     <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        //                         <Link className="link">
-        //                             Movies
-        //                         </Link>
-        //                     </Button>
-        //                     <Menu
-        //                         id="simple-menu"
-        //                         anchorEl={anchorEl}
-        //                         keepMounted
-        //                         open={Boolean(anchorEl)}
-        //                         onClose={handleClose}
-        //                     >
-        //                         <MenuItem onClick={handleClose}>
-        //                             <Link className="sublink" to="/">This Week</Link>
-        //                         </MenuItem>
-        //                         <MenuItem onClick={handleClose}>
-        //                             <Link className="sublink" to="/popular">Popular</Link>
-        //                         </MenuItem>
-        //                     </Menu>
-        //                 </li>
-        //                 <li onClick={hideMenu} className="linksNav">
-        //                     <Button>
-        //                         <Link className="link" to="/my-list">
-        //                             My List
-        //                         </Link>
-        //                     </Button>
-        //                 </li>
-        //             </ul>
-        //             <ul className="listMenu search-bar">
-        //                 <li className="linksNav">
-        //                     <form action="" className="formSubmit" onSubmit={handleSubmit}>
-        //                         <input value={searchText} onChange={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: e.target.value})} type="text" className="inputSearch" onFocus={(e) => dispatch({type: 'ADD_SEARCH_TEXT', payload: ""})}/>
-        //                         <Link className="link" to={{pathname: `/search/${searchText}`}}>
-        //                             <button type="submit" className="btn-search">
-        //                                 <img src={search} alt="icon magnifying glass" className="logoGlass"/>
-        //                             </button>
-        //                         </Link>
-        //                     </form>
-        //                 </li>
-        //             </ul>
-        //             </>
-        //         )}
-        //     </nav>
-        //     <div className="menuResBtn">
-        //         <img onClick={toggleNavRes} src={!menu ? menuIco : cross} alt="Menu Icon Responsive" className="menuIco"/>
-        //     </div>
-        // </div>
     )
 
 }

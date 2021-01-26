@@ -70,6 +70,13 @@ export default function Cards({ item, media_type }) {
                         <h3 className="card-title">{item.title}</h3>
                         : null
                     }
+                    {item.character ?
+                        <>
+                            <h4>Character :</h4>
+                            <p className="card-txt">{item.character}</p>
+                        </>
+                        :null
+                    }
                     {item.release_date ?
                         <>
                             <h4>Release date :</h4>
@@ -90,6 +97,7 @@ export default function Cards({ item, media_type }) {
     }
 
     if (media_type === "tv") {
+        console.log("item", item)
         return (
             <div className="card">
                 <Icon 
@@ -100,8 +108,13 @@ export default function Cards({ item, media_type }) {
                 <img src={item.poster_path !== null ? `${Config.IMG_ROOT}${item.poster_path}` : placeholder} alt={item.poster_path !== null ? `Poster of ${item.name}` : `Poster of DVD`} className="card-image"/>
                 <div className="card-body">
                     <h3 className="card-title">{item.name}</h3>
-                    {/* <h4>Character :</h4>
-                    <p className="card-txt">{item.character}</p> */}
+                    {item.character ?
+                        <>
+                            <h4>Character :</h4>
+                            <p className="card-txt">{item.character}</p>
+                        </>
+                        :null
+                    }
                     <Link
                         className="link"
                         onClick={(e) => clickScrollTop(e)}

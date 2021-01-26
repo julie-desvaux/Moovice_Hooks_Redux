@@ -1,4 +1,6 @@
 .navbar-container {
+    position: fixed;
+    width: 100%;
     .navbar-subcontainer {
         background: #343a40;
         height: 50px;
@@ -102,6 +104,7 @@
     
     .inputSearch {
         width: 300px;
+        padding-left: 10px;
         background-color: #fff;
         border: 2px solid #fff;
         border-top-left-radius: 5px;

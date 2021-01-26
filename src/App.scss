@@ -1,5 +1,5 @@
 .title {
-    margin: 2rem 0 3rem 0;
+    padding: 5rem 0 3rem 0;
 }
 
 .container-cards {
@@ -28,6 +28,7 @@
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .margin-right{

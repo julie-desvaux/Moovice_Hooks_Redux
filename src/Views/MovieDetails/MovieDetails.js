@@ -95,57 +95,57 @@ export default function MovieDetails() {
                         <h3 className="tagline">{movieDetails.tagline}</h3>
                         <div className="movie-details">
                             {movieDetails.genres === undefined ? '' : movieDetails.genres.map((genre, i) => <div className="movie-genre-item" key={i}><Link className="movie-genre-item" to={{pathname: `/genre/${media_type}/${genre.name}/${genre.id}`}}>{genre.name}</Link></div>)}
-                            </div>
-                            <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
-                            <div className="flex">
-                                {movieDetails.release_date ?
-                                    <h4 className="subtitle lemon margin-right">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
-                                    : null
-                                }
-                                {movieDetails.first_air_date ?
-                                    <h4 className="subtitle lemon margin-right">First air date: <br/><span className="bold-normal">{movieDetails.first_air_date}</span></h4>
-                                    : null
-                                }
-                                {movieDetails.last_air_date ?
-                                    <h4 className="subtitle lemon margin-right">Last air date: <br/><span className="bold-normal">{movieDetails.last_air_date}</span></h4>
-                                    : null
-                                }
-                                <h4 className="subtitle lemon margin-right">Status : <span className="bold-normal">{movieDetails.status}</span></h4>
-                                {movieDetails.runtime ?
-                                    <div className="subtitle lemon margin-right flex"><img className="img-h4" src={hourglass} alt="Runtime"/>  : <span className="bold-normal"> {runtimeFormat(movieDetails.runtime)}</span></div>
-                                    : null
-                                }
-                                {movieDetails.number_of_seasons ?
-                                    <h4 className="subtitle lemon margin-right">Season(s) : <span className="bold-normal">{movieDetails.number_of_seasons}</span></h4>
-                                    :null
-                                }
-                                {movieDetails.number_of_episodes ?
-                                    <h4 className="subtitle lemon margin-right">Episode(s) : <span className="bold-normal">{movieDetails.number_of_episodes}</span></h4>
-                                    :null
-                                }
-                            </div>
-                            <div className="flex">
-                                {movieDetails.budget ?
-                                    movieDetails.budget !== 0 ?
-                                    <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">{convertFormatMoney(movieDetails.budget)}</span></h4>
-                                    : null : null
-                                }
-                                {movieDetails.revenue ?
-                                    movieDetails.revenue !== 0 ?
-                                    <h4 className="subtitle lemon">Revenue : <span className="bold-normal">{convertFormatMoney(movieDetails.revenue)}</span></h4>
-                                    : null : null
-                                }
-                            </div>                            
-                            {movieDetails.homepage ?
-                                <h4 className="subtitle lemon">Homepage : <span className="bold-normal"><a className="font-size-1" href={movieDetails.homepage}>{movieDetails.homepage}</a></span></h4>
+                        </div>
+                        <h4 className="subtitle lemon">Synopsy : <span className="bold-normal">{movieDetails.overview}</span></h4>
+                        <div className="flex">
+                            {movieDetails.release_date ?
+                                <h4 className="subtitle lemon margin-right">Release date : <span className="bold-normal">{movieDetails.release_date}</span></h4>
+                                : null
+                            }
+                            {movieDetails.first_air_date ?
+                                <h4 className="subtitle lemon margin-right">First air date: <br/><span className="bold-normal">{movieDetails.first_air_date}</span></h4>
+                                : null
+                            }
+                            {movieDetails.last_air_date ?
+                                <h4 className="subtitle lemon margin-right">Last air date: <br/><span className="bold-normal">{movieDetails.last_air_date}</span></h4>
+                                : null
+                            }
+                            <h4 className="subtitle lemon margin-right">Status : <span className="bold-normal">{movieDetails.status}</span></h4>
+                            {movieDetails.runtime ?
+                                <div className="subtitle lemon margin-right flex"><img className="img-h4" src={hourglass} alt="Runtime"/>  : <span className="bold-normal"> {runtimeFormat(movieDetails.runtime)}</span></div>
+                                : null
+                            }
+                            {movieDetails.number_of_seasons ?
+                                <h4 className="subtitle lemon margin-right">Season(s) : <span className="bold-normal">{movieDetails.number_of_seasons}</span></h4>
                                 :null
                             }
-                            {trailer.id === undefined ? '' : 
-                                <Modal 
-                                    movieDetails={movieDetails}
-                                    trailer={trailer}
-                                />
+                            {movieDetails.number_of_episodes ?
+                                <h4 className="subtitle lemon margin-right">Episode(s) : <span className="bold-normal">{movieDetails.number_of_episodes}</span></h4>
+                                :null
                             }
+                        </div>
+                        <div className="flex">
+                            {movieDetails.budget ?
+                                movieDetails.budget !== 0 ?
+                                <h4 className="subtitle lemon margin-right">Budget : <span className="bold-normal">{convertFormatMoney(movieDetails.budget)}</span></h4>
+                                : null : null
+                            }
+                            {movieDetails.revenue ?
+                                movieDetails.revenue !== 0 ?
+                                <h4 className="subtitle lemon">Revenue : <span className="bold-normal">{convertFormatMoney(movieDetails.revenue)}</span></h4>
+                                : null : null
+                            }
+                        </div>                            
+                        {movieDetails.homepage ?
+                            <h4 className="subtitle lemon">Homepage : <span className="bold-normal"><a className="font-size-1" href={movieDetails.homepage}>{movieDetails.homepage}</a></span></h4>
+                            :null
+                        }
+                        {trailer.id === undefined ? '' : 
+                            <Modal 
+                                movieDetails={movieDetails}
+                                trailer={trailer}
+                            />
+                        }
                     </div>
                 </div>
             </div>
