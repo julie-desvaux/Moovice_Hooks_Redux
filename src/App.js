@@ -1,6 +1,7 @@
 import './App.scss'
 import {
   BrowserRouter as Router,
+  HashRouter,
   Route,
   Switch
 } from 'react-router-dom'
@@ -16,7 +17,7 @@ import MyList from './Views/MyList/MyList'
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <NavBar />
       <Switch>
         <Route exact path="/">
@@ -44,7 +45,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 

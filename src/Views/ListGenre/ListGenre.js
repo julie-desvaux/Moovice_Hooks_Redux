@@ -16,6 +16,7 @@ export default function ListGenre() {
             const url = `${Config.API_ROOT}discover/${media_type}?api_key=${Config.API_KEY}&sort_by=popularity.desc&with_genres=${id}`
             await axios.get(url).then((response) => {
                 if (response.data) {
+                    console.log("response", response)
                     setMoviesGenre(response.data.results)
                 }
             })
@@ -35,7 +36,8 @@ export default function ListGenre() {
                 {moviesGenre.map((movie) => {
                     return(
                         <Card 
-                            movie={movie}
+                            media_type={media_type}
+                            item={movie}
                             key={movie.id}
                         />
                         )
