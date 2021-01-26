@@ -1,14 +1,10 @@
 import './App.scss'
-import {
-  BrowserRouter as Router,
-  HashRouter,
-  Route,
-  Switch
-} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import NavBar from './Components/Navbar/Navbar'
 import MovieDiscover from './Views/Discover/MovieDiscover'
 import MoviePopular from './Views/Popular/MoviePopular'
 import MovieDetails from './Views/MovieDetails/MovieDetails'
+import TvDiscover from './Views/Discover/TvDiscover'
 import ListSearch from './Views/ListSearch/ListSearch'
 import ListGenre from './Views/ListGenre/ListGenre'
 import ActorDetails from './Views/ActorDetails/ActorDetails'
@@ -17,7 +13,7 @@ import MyList from './Views/MyList/MyList'
 
 function App() {
   return (
-    <HashRouter>
+    <Router>
       <NavBar />
       <Switch>
         <Route exact path="/">
@@ -25,6 +21,9 @@ function App() {
         </Route>
         <Route exact path="/movie-popular">
           <MoviePopular />
+        </Route>
+        <Route exact path="/tv-discover">
+          <TvDiscover />
         </Route>
         <Route exact path="/my-list">
           <MyList />
@@ -45,7 +44,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-    </HashRouter>
+    </Router>
   );
 }
 
