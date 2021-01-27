@@ -1,5 +1,5 @@
 import './App.scss'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import NavBar from './Components/Navbar/Navbar'
 import MovieDiscover from './Views/Discover/MovieDiscover'
 import MoviePopular from './Views/Popular/MoviePopular'
