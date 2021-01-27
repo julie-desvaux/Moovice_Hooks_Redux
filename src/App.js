@@ -1,15 +1,17 @@
 import './App.scss'
 import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import NavBar from './Components/Navbar/Navbar'
-import MovieDiscover from './Views/Discover/MovieDiscover'
-import MoviePopular from './Views/Popular/MoviePopular'
-import MovieDetails from './Views/MovieDetails/MovieDetails'
-import TvDiscover from './Views/Discover/TvDiscover'
+import MovieDiscover from './Views/Movie/MovieDiscover'
+import MoviePopular from './Views/Movie/MoviePopular'
+import MovieDetails from './Views/Movie/MovieDetails/MovieDetails'
+import TvDiscover from './Views/TV/TvDiscover'
+import TvOnAir from './Views/TV/TvOnAir'
 import ListSearch from './Views/ListSearch/ListSearch'
 import ListGenre from './Views/ListGenre/ListGenre'
 import ActorDetails from './Views/ActorDetails/ActorDetails'
 import NotFound from './Views/NotFound/NotFound'
 import MyList from './Views/MyList/MyList'
+import TvToday from './Views/TV/TvToday';
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
         </Route>
         <Route exact path="/tv-discover">
           <TvDiscover />
+        </Route>
+        <Route exact path="/tv-on-air">
+          <TvOnAir />
+        </Route>
+        <Route exact path="/tv-today">
+          <TvToday />
         </Route>
         <Route exact path="/my-list">
           <MyList />

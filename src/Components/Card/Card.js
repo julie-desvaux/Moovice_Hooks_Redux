@@ -97,7 +97,6 @@ export default function Cards({ item, media_type }) {
     }
 
     if (media_type === "tv") {
-        console.log("item", item)
         return (
             <div className="card">
                 <Icon 

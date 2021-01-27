@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Config from '../../Config'
 import Card from '../../Components/Card/Card'
 
 export default function MyList() {

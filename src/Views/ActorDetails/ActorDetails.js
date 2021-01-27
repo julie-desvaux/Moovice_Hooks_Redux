@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Config from '../../Config'
 import Card from '../../Components/Card/Card'
-import '../MovieDetails/MovieDetails.scss'
+import '../Movie/MovieDetails/MovieDetails.scss'
 
 export default function ActorDetails() {
 

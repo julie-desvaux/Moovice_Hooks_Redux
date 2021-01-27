@@ -6,10 +6,9 @@ import './Navbar.scss'
 
 export default function NavBar() {
 
-    const { searchText, smallScreen } = useSelector(state => ({ ...state.searchTextReducer }))
+    const { searchText } = useSelector(state => ({ ...state.searchTextReducer }))
     const [widthSreen, setWidthScreen] = useState(window.innerWidth)
     const [toggleMenu, setToggleMenu] = useState(false)
-    const [menu, showMenu] = useState(false);
     const [subMenuDecouvrir, showSubMenuDecouvrir] = useState(false);
 	const [subMenuParticiper, showSubMenuParticiper] = useState(false);
     const dispatch = useDispatch()
@@ -26,19 +25,6 @@ export default function NavBar() {
             window.removeEventListener('resize', changeWidth)
         }
     }, [])
-
-    function windowOnClick(event) {
-        if (!event.target.matches('.koya-icon-menu')) {
-          showMenu(false);
-          window.removeEventListener('click', windowOnClick);
-        }
-    }
-    
-    function iconOnClick(event) {
-        console.log("click")
-        event.stopPropagation();
-        showMenu(!menu);
-    }
 
     const handleSubmit = (e) => {
         toogleNavSmallScreen();
@@ -64,7 +50,7 @@ export default function NavBar() {
     return (
         <div className="navbar-container">
             <nav className="navbar-subcontainer">
-                <Link className="link-logo" to="">
+                <Link className="link-logo" to="#">
                     MOOVICE
                 </Link>
                 {(widthSreen > 900 || toggleMenu) && (
@@ -73,13 +59,13 @@ export default function NavBar() {
         
                             <div className="container-submenu">
                                 <li onClick={toogleNavSmallScreen} className="linksNav">
-                                    <Link className="link link-mobile" onClick={(e) => menuDecouvrirOnClick(e)}>
+                                    <Link className="link link-mobile" onClick={(e) => menuDecouvrirOnClick(e)} to="#">
                                         Movies
                                     </Link>
                                 </li>
                                 {(widthSreen < 900 && toggleMenu) ? (
                                     <ul className="sub-menu-mobile">
-                                        <Link to="/"  onClick={toogleNavSmallScreen} className="link">
+                                        <Link to="/"  onClick={toogleNavSmallScreen} className="link" to="#">
                                             <li className="li-menu-mobile">Discover</li>
                                         </Link>
                                         <Link to="/movie-popular" onClick={toogleNavSmallScreen} className="link">
@@ -113,8 +99,11 @@ export default function NavBar() {
                                         <Link to="/tv-discover"  onClick={toogleNavSmallScreen} className="link sublink-mobile">
                                             <li className="li-menu-mobile">Discover</li>
                                         </Link>
-                                        <Link to="/tv-popular" onClick={toogleNavSmallScreen} className="link sublink-mobile">
-                                            <li className="li-menu-mobile">Popular</li>
+                                        <Link to="/tv-on-air" onClick={toogleNavSmallScreen} className="link sublink-mobile">
+                                            <li className="li-menu-mobile">On the air</li>
+                                        </Link>
+                                        <Link to="/tv-today" onClick={toogleNavSmallScreen} className="link sublink-mobile">
+                                            <li className="li-menu-mobile">Tv Today</li>
                                         </Link>
                                     </ul>
                                 ) : (
@@ -124,8 +113,11 @@ export default function NavBar() {
                                                 <Link to="/tv-discover" className="link">
                                                     <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>Discover</li>
                                                 </Link>
-                                                <Link to="/tv-popular" className="link">
-                                                    <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>Popular</li>
+                                                <Link to="/tv-on-air" className="link">
+                                                    <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>On Air</li>
+                                                </Link>
+                                                <Link to="/tv-today" className="link">
+                                                    <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>Tv Today</li>
                                                 </Link>
                                             </ul>
                                         </div>
@@ -134,7 +126,7 @@ export default function NavBar() {
                             </div>
                             
                             <li onClick={toogleNavSmallScreen} className="linksNav">
-                                <Link className="link link-mobile link-mobile-solo" to="/my-list" target="blank">
+                                <Link className="link link-mobile link-mobile-solo" to="/my-list">
                                     My List
                                 </Link>
                             </li>

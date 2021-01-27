@@ -1,4 +1,4 @@
-const discoverReducer = (state = { discover: [], discoverTv: [] }, action) => {
+const discoverReducer = (state = { discover: [], discoverTv: [], onAirTv: [] }, action) => {
 
     switch (action.type) {
         case 'ADD_DISCOVER' : 
