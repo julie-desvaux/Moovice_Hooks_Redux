@@ -73,29 +73,29 @@ export default function NavBar() {
         
                             <div className="container-submenu">
                                 <li onClick={toogleNavSmallScreen} className="linksNav">
-                                    <a className="link link-mobile" onClick={(e) => menuDecouvrirOnClick(e)}>
+                                    <Link className="link link-mobile" onClick={(e) => menuDecouvrirOnClick(e)}>
                                         Movies
-                                    </a>
+                                    </Link>
                                 </li>
                                 {(widthSreen < 900 && toggleMenu) ? (
                                     <ul className="sub-menu-mobile">
-                                        <a href="/"  onClick={toogleNavSmallScreen} className="link">
+                                        <Link to="/"  onClick={toogleNavSmallScreen} className="link">
                                             <li className="li-menu-mobile">Discover</li>
-                                        </a>
-                                        <a href="/movie-popular" onClick={toogleNavSmallScreen} className="link">
+                                        </Link>
+                                        <Link to="/movie-popular" onClick={toogleNavSmallScreen} className="link">
                                             <li className="li-menu-mobile">Popular</li>
-                                        </a>
+                                        </Link>
                                     </ul>
                                 ) : (
                                     subMenuDecouvrir ? (
                                         <div className="dropdown-menu">
                                             <ul>
-                                                <a href="/" className="link">
+                                                <Link to="/" className="link">
                                                     <li className="li-dropdown" onClick={(e) => menuDecouvrirOnClick(e)}>Discover</li>
-                                                </a>
-                                                <a href="/movie-popular" className="link">
+                                                </Link>
+                                                <Link to="/movie-popular" className="link">
                                                     <li className="li-dropdown" onClick={(e) => menuDecouvrirOnClick(e)}>Popular</li>
-                                                </a>
+                                                </Link>
                                             </ul>
                                         </div>
                                     ) : null
@@ -104,29 +104,29 @@ export default function NavBar() {
 
                             <div className="container-submenu">
                                 <li onClick={toogleNavSmallScreen} className="linksNav">
-                                    <a className="link link-mobile" onClick={(e) => menuParticiperOnClick(e)} href="#">
+                                    <Link className="link link-mobile" onClick={(e) => menuParticiperOnClick(e)} to="#">
                                         Tv
-                                    </a>
+                                    </Link>
                                 </li>
                                 {(widthSreen < 900 && toggleMenu) ? (
                                     <ul className="sub-menu-mobile">
-                                        <a href="/tv-discover"  onClick={toogleNavSmallScreen} className="link sublink-mobile">
+                                        <Link to="/tv-discover"  onClick={toogleNavSmallScreen} className="link sublink-mobile">
                                             <li className="li-menu-mobile">Discover</li>
-                                        </a>
-                                        <a href="/tv-popular" onClick={toogleNavSmallScreen} className="link sublink-mobile">
+                                        </Link>
+                                        <Link to="/tv-popular" onClick={toogleNavSmallScreen} className="link sublink-mobile">
                                             <li className="li-menu-mobile">Popular</li>
-                                        </a>
+                                        </Link>
                                     </ul>
                                 ) : (
                                     subMenuParticiper ? (
                                         <div className="dropdown-menu">
                                             <ul>
-                                                <a href="/tv-discover" className="link">
+                                                <Link to="/tv-discover" className="link">
                                                     <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>Discover</li>
-                                                </a>
-                                                <a href="/tv-popular" className="link">
+                                                </Link>
+                                                <Link to="/tv-popular" className="link">
                                                     <li className="li-dropdown" onClick={(e) => menuParticiperOnClick(e)}>Popular</li>
-                                                </a>
+                                                </Link>
                                             </ul>
                                         </div>
                                     ) : null
@@ -134,9 +134,9 @@ export default function NavBar() {
                             </div>
                             
                             <li onClick={toogleNavSmallScreen} className="linksNav">
-                                <a className="link link-mobile link-mobile-solo" href="/my-list" target="blank">
+                                <Link className="link link-mobile link-mobile-solo" to="/my-list" target="blank">
                                     My List
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                         <ul className="listMenu search-bar">
