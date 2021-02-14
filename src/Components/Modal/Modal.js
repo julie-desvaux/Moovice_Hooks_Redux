@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Config from "../../Config";
 
 import "./Modal.scss";
