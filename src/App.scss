@@ -1,36 +1,42 @@
 .title {
-    padding: 5rem 0 3rem 0;
+	padding: 5rem 0 3rem 0;
 }
 
 .container-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 .subtitle {
-    margin: 1.5rem 0;
-    font-weight: bold;
+	margin: 1.5rem 0;
+	font-weight: bold;
 }
 
 .bold-normal {
-    font-weight: normal;
-    color: #fff;
+	font-weight: normal;
+	color: #fff;
 }
 
 .font-size-1 {
-    font-size: 1rem;
+	font-size: 1rem;
 }
 
 .lemon {
-    color: #E9D985;
+	color: #e9d985;
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.margin-right{
-    margin-right: 2rem;
+.margin-right {
+	margin-right: 2rem;
+}
+
+.overflow {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }

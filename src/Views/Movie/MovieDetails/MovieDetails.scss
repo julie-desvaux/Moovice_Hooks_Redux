@@ -1,81 +1,85 @@
 .container-image {
-    width: 100%;
-    min-height: 100vh;
-    border-bottom: 1px solid var(--primaryColor);
-    background-position: right -200px top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    @media screen and (max-width: 850px){
-        height: auto
-    }
-    .calque {
-        width: 100%;
-        background-image: linear-gradient(to right, rgba(6.67%, 5.10%, 4.71%, 0.95) 150px, rgba(6.67%, 5.10%, 4.71%, 0.8) 100%);
-        display: flex;
-        color: white;
-        padding: 3rem 5rem;
-        @media screen and (max-width: 1025px) {
-            padding: 0.5rem;
-        }
-        @media screen and (max-width: 900px) {
-            padding: 0.5rem;
-            flex-direction: column;
-        }
-        .subcontainer-poster {
-            margin-right: 2rem;
-            @media screen and (max-width: 1025px) {
-                margin-right: 1rem;
-            }
-            @media screen and (max-width: 900px) {
-                margin: 0 auto
-            }
-        }
-        .subcontainer-details {
-            .tagline {
-                margin: 1rem 0;
-            }
-            .movie-details {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-                @media screen and (max-width: 450px) {
-                    flex-direction: column;
-                }
-                .movie-genre-item {
-                    margin: 1.5rem 0.5rem;
-                    background-color: #fff;
-                    color: #45b0f8;
-                    border-radius: 5px;
-                    padding: 4px 20px;
-                    border: none;
-                    font-weight: bold;
-                    &:hover {
-                        color: black;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
+	width: 100%;
+	min-height: 100vh;
+	border-bottom: 1px solid var(--primaryColor);
+	background-position: right -200px top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	@media screen and (max-width: 850px) {
+		height: auto;
+	}
+	.calque {
+		width: 100%;
+		background-image: linear-gradient(
+			to right,
+			rgba(6.67%, 5.1%, 4.71%, 0.95) 150px,
+			rgba(6.67%, 5.1%, 4.71%, 0.8) 100%
+		);
+		display: flex;
+		color: white;
+		padding: 5rem 5rem;
+		@media screen and (max-width: 1025px) {
+			padding: 0.5rem;
+		}
+		@media screen and (max-width: 900px) {
+			padding: 0.5rem;
+			flex-direction: column;
+		}
+		.subcontainer-poster {
+			margin-right: 2rem;
+			@media screen and (max-width: 1025px) {
+				margin-right: 1rem;
+			}
+			@media screen and (max-width: 900px) {
+				margin: 0 auto;
+			}
+		}
+		.subcontainer-details {
+			.tagline {
+				margin: 1rem 0;
+			}
+			.movie-details {
+				display: flex;
+				justify-content: space-around;
+				flex-wrap: wrap;
+				@media screen and (max-width: 450px) {
+					flex-direction: column;
+				}
+				.movie-genre-item {
+					margin: 1.5rem 0.5rem;
+					background-color: #fff;
+					color: #45b0f8;
+					border-radius: 5px;
+					padding: 4px 20px;
+					border: none;
+					font-weight: bold;
+					&:hover {
+						color: black;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
 }
 
 .img-h4 {
-    font-size: 1rem;
-    width: 7%;
+	font-size: 1rem;
+	width: 7%;
 }
 
 .btn-primary {
-    background: #45b0f8;
-    padding: 0.3rem 0.5rem;
-    border-radius: 10px;
-    cursor: pointer
+	background: #45b0f8;
+	padding: 0.3rem 0.5rem;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .close {
-    background: #E9D985;
-    color: black;
-    padding: 0.3rem 0.5rem;
-    border-radius: 10px;
-    cursor: pointer;
+	background: #e9d985;
+	color: black;
+	padding: 0.3rem 0.5rem;
+	border-radius: 10px;
+	cursor: pointer;
 }
