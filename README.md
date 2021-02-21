@@ -17,4 +17,4 @@
 * [Cliquez ici](https://moovice.julie-desvaux.com/)
 
 ## 
-![Visuel](https://www.julie-desvaux.com/images/moovice.gif "Visuel")
+![Visuel](https://www.julie-desvaux.com/images/moovice.png "Visuel")
