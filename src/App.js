@@ -1,6 +1,3 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import "./App.scss";
 import { Route, HashRouter as Router, Switch } from "react-router-dom";
 import NavBar from "./Components/Navbar/Navbar";
 import MovieDiscover from "./Views/Movie/MovieDiscover";
@@ -15,20 +12,12 @@ import NotFound from "./Views/NotFound/NotFound";
 import MyList from "./Views/MyList/MyList";
 import TvToday from "./Views/TV/TvToday";
 
+import "./App.scss";
+
 function App() {
-	const navbar = useRef(null);
-
-	useEffect(() => {
-		gsap.from(navbar.current, {
-			autoAlpha: 0,
-			ease: "none",
-			delay: 1,
-		});
-	}, []);
-
 	return (
 		<Router>
-			<NavBar useRef={navbar} />
+			<NavBar />
 			<Switch>
 				<Route exact path="/">
 					<MovieDiscover />
