@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Config from "../../../Config";
 import Modal from "../../../Components/Modal/Modal";
-import Card from "../../../Components/Card/Card";
+import Card from "../../../Components/Card";
 import hourglass from "../../../Assets/hourglass.svg";
 import "./MovieDetails.scss";
 

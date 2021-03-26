@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Config from "../../Config";
 import axios from "axios";
-import Card from "../../Components/Card/Card";
+import Card from "../../Components/Card";
 
 export default function TvOnAir() {
 	// const { onAirTv } = useSelector(state => ({ ...state.popularReducer }))
