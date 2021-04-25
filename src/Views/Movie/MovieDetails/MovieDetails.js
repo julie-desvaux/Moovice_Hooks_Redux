@@ -10,7 +10,9 @@ import "./MovieDetails.scss";
 
 export default function MovieDetails() {
 	const { media_type, id } = useParams();
-	const { movieDetails, trailer, actors, toggleModal } = useSelector((state) => ({ ...state.movieDetailsReducer }));
+	const { movieDetails, trailer, actors, toggleModal, watchInfos } = useSelector((state) => ({
+		...state.movieDetailsReducer,
+	}));
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -55,9 +57,22 @@ export default function MovieDetails() {
 			});
 		}
 
+		async function fetchDataWatchInfos() {
+			const urlWatchInfos = `${Config.API_ROOT}${media_type}/${id}/watch/providers?api_key=${Config.API_KEY}`;
+			await axios.get(urlWatchInfos).then((responseWatchInfos) => {
+				if (responseWatchInfos) {
+					dispatch({
+						type: "ADD_WATCH_INFO",
+						payload: responseWatchInfos.data.results.FR,
+					});
+				}
+			});
+		}
+
 		fetchDataMovieDetails();
 		fetchDataTrailer();
 		fetchDataActors();
+		fetchDataWatchInfos();
 	}, [id, dispatch, media_type]);
 
 	const convertFormatMoney = (money) => {
@@ -188,6 +203,55 @@ export default function MovieDetails() {
 								media_type={media_type}
 							/>
 						)}
+						{watchInfos ? (
+							<div className="watch-infos">
+								{watchInfos.flatrate ? (
+									<>
+										<h4 className="subtitle lemon">In streaming with subscription</h4>
+										<div className="flex">
+											{watchInfos.flatrate.map((watchInfo, index) => (
+												<img
+													className="logo-watch"
+													src={`${Config.STREAM_IMG_ROOT}${watchInfo.logo_path}`}
+													alt={watchInfo.provider_name}
+													key={index}
+												/>
+											))}
+										</div>
+									</>
+								) : null}
+								{watchInfos.rent ? (
+									<>
+										<h4 className="subtitle lemon">For rent</h4>
+										<div className="flex">
+											{watchInfos.rent.map((watchInfo, index) => (
+												<img
+													className="logo-watch"
+													src={`${Config.STREAM_IMG_ROOT}${watchInfo.logo_path}`}
+													alt={watchInfo.provider_name}
+													key={index}
+												/>
+											))}
+										</div>
+									</>
+								) : null}
+								{watchInfos.buy ? (
+									<>
+										<h4 className="subtitle lemon">For buy</h4>
+										<div className="flex">
+											{watchInfos.buy.map((watchInfo, index) => (
+												<img
+													className="logo-watch"
+													src={`${Config.STREAM_IMG_ROOT}${watchInfo.logo_path}`}
+													alt={watchInfo.provider_name}
+													key={index}
+												/>
+											))}
+										</div>
+									</>
+								) : null}
+							</div>
+						) : null}
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,13 @@
 const movieDetailsReducer = (
-	state = { movieDetails: "", trailer: "", actors: "", moviesGenre: [], favorites: [], toggleModal: false },
+	state = {
+		movieDetails: "",
+		trailer: "",
+		actors: "",
+		moviesGenre: [],
+		favorites: [],
+		toggleModal: false,
+		watchInfos: [],
+	},
 	action
 ) => {
 	switch (action.type) {
@@ -27,6 +35,11 @@ const movieDetailsReducer = (
 			return {
 				...state,
 				toggleModal: action.payload,
+			};
+		case "ADD_WATCH_INFO":
+			return {
+				...state,
+				watchInfos: action.payload,
 			};
 		default:
 			return state;
