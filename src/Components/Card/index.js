@@ -3,9 +3,9 @@ import Movie from "./Movie";
 import TV from "./Tv";
 import Person from "./Person";
 
-export default function Card(item, media_type) {
+export default function Card(item) {
 	const clickScrollTop = (e) => {
-		if (e.target.className !== "card-btn") {
+		if (e.target.className !== "link") {
 			Scroll.scroller.scrollTo("container", {
 				duration: 150,
 				delay: 100,
@@ -15,12 +15,12 @@ export default function Card(item, media_type) {
 		}
 	};
 
-	switch (media_type) {
+	switch (item.media_type) {
 		case "person":
-			return <Person {...item} {...media_type} clickScrollTop={clickScrollTop} />;
+			return <Person {...item} clickScrollTop={clickScrollTop} />;
 		case "tv":
-			return <TV {...item} {...media_type} clickScrollTop={clickScrollTop} />;
+			return <TV {...item} clickScrollTop={clickScrollTop} />;
 		default:
-			return <Movie {...item} {...media_type} clickScrollTop={clickScrollTop} />;
+			return <Movie {...item} clickScrollTop={clickScrollTop} />;
 	}
 }

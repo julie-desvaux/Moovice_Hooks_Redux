@@ -47,8 +47,6 @@ export default function ActorDetails() {
 		fetchDataTvList();
 	}, [id, dispatch]);
 
-	console.log(actorDetails);
-
 	if (!actorDetails || !actorMoviesList) {
 		return null;
 	}
