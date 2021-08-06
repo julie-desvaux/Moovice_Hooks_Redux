@@ -28,13 +28,20 @@ export default function Discover() {
 		});
 	}
 
+	const handleFirstPage = () => {
+		fetchDataDiscover(1);
+		window.scrollTo(0, 0);
+	};
 	const handlePreview = () => {
 		fetchDataDiscover(discover.page - 1);
 		window.scrollTo(0, 0);
 	};
-
 	const handleNext = () => {
 		fetchDataDiscover(discover.page + 1);
+		window.scrollTo(0, 0);
+	};
+	const handleLastPage = () => {
+		fetchDataDiscover(discover.total_pages);
 		window.scrollTo(0, 0);
 	};
 
@@ -51,13 +58,31 @@ export default function Discover() {
 				{discover && discover.results.map((movie) => <Card media_type="movie" item={movie} key={movie.id} />)}
 			</div>
 			<div className="container-btns">
-				{discover.page !== 1 && <Button onClick={handlePreview}>Preview</Button>}
+				{discover.page !== 1 && (
+					<Button onClick={handleFirstPage}>
+						<span className="material-icons">fast_rewind</span>
+					</Button>
+				)}
+				{discover.page !== 1 && (
+					<Button onClick={handlePreview}>
+						<span className="material-icons">chevron_left</span>
+					</Button>
+				)}
 				<span className="mx-2">
 					<strong>
 						{discover.page} / {discover.total_pages}
 					</strong>
 				</span>
-				{discover.page !== discover.total_pages && <Button onClick={handleNext}>Next</Button>}
+				{discover.page !== discover.total_pages && (
+					<Button onClick={handleNext}>
+						<span className="material-icons">navigate_next</span>
+					</Button>
+				)}
+				{discover.page !== discover.total_pages && (
+					<Button onClick={handleLastPage}>
+						<span class="material-icons">fast_forward</span>
+					</Button>
+				)}
 			</div>
 		</div>
 	);

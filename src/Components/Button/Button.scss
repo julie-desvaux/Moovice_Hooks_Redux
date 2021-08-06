@@ -1,9 +1,9 @@
 .button-link {
-	margin: 0;
-	min-width: 240px;
+	margin: 0 0.5rem;
+	min-width: 50px;
 
 	@media (max-width: #{768px - 1px}) {
-		min-width: 200px;
+		min-width: 20px;
 	}
 
 	.button-container {
