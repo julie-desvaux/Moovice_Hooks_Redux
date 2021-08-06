@@ -15,6 +15,7 @@ export default function TvDiscover() {
 			const NEXT_WEEK = moment().add(7, "days").format("YYYY-MM-DD");
 			const url = `${Config.API_ROOT}discover/tv?primary_release_date.gte=${TODAY}&primary_release_date.lte=${NEXT_WEEK}&sort_by=popularity.desc&include_adult=false&include_video=false&api_key=${Config.API_KEY}`;
 			await axios.get(url).then((response) => {
+				console.log(response.data);
 				dispatch({
 					type: "ADD_DISCOVER_TV",
 					payload: response.data.results,
