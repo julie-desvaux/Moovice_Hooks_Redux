@@ -1,0 +1,30 @@
+.button-link {
+	margin: 0 0.5rem;
+	min-width: 50px;
+
+	@media (max-width: #{768px - 1px}) {
+		min-width: 20px;
+	}
+
+	.button-container {
+		cursor: pointer;
+		background-color: #343a40;
+		color: white;
+		padding: 16px;
+		border-radius: 8px;
+		font-size: 1rem;
+		transition: transform 0.3s ease-in-out;
+		max-width: 300px;
+		width: 100%;
+
+		&:hover {
+			transform: scale(1.08);
+		}
+	}
+}
+
+.buttons-container {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: space-around;
+}

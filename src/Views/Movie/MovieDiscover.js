@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Config from "../../Config";
 import Card from "../../Components/Card";
+import Button from "../../Components/Button/Button";
+
 import moment from "moment";
 import axios from "axios";
 
@@ -10,31 +13,76 @@ export default function Discover() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		async function fetchDataDiscover() {
-			const TODAY = moment().format("YYYY-MM-DD");
-			const NEXT_WEEK = moment().add(7, "days").format("YYYY-MM-DD");
-			const url = `${Config.API_ROOT}discover/movie?primary_release_date.gte=${TODAY}&primary_release_date.lte=${NEXT_WEEK}&sort_by=popularity.desc&include_adult=false&include_video=false&api_key=${Config.API_KEY}`;
-			await axios.get(url).then((response) => {
-				dispatch({
-					type: "ADD_DISCOVER",
-					payload: response.data.results,
-				});
-			});
-		}
-		fetchDataDiscover();
+		fetchDataDiscover(1);
 	}, [dispatch]);
 
-	if (!discover) {
+	async function fetchDataDiscover(page) {
+		const TODAY = moment().format("YYYY-MM-DD");
+		const NEXT_WEEK = moment().add(7, "days").format("YYYY-MM-DD");
+		const url = `${Config.API_ROOT}discover/movie?primary_release_date.gte=${TODAY}&primary_release_date.lte=${NEXT_WEEK}&sort_by=popularity.desc&include_adult=false&include_video=false&api_key=${Config.API_KEY}&page=${page}`;
+		await axios.get(url).then((response) => {
+			dispatch({
+				type: "ADD_DISCOVER",
+				payload: response.data,
+			});
+		});
+	}
+
+	const handleFirstPage = () => {
+		fetchDataDiscover(1);
+		window.scrollTo(0, 0);
+	};
+	const handlePreview = () => {
+		fetchDataDiscover(discover.page - 1);
+		window.scrollTo(0, 0);
+	};
+	const handleNext = () => {
+		fetchDataDiscover(discover.page + 1);
+		window.scrollTo(0, 0);
+	};
+	const handleLastPage = () => {
+		fetchDataDiscover(discover.total_pages);
+		window.scrollTo(0, 0);
+	};
+
+	if (discover.length === 0) {
 		return null;
 	}
+
+	console.log(discover);
 
 	return (
 		<div className="container">
 			<h1 className="text-center title">Discover</h1>
 			<div className="container-cards">
-				{discover.map((movie) => (
-					<Card media_type="movie" item={movie} key={movie.id} />
-				))}
+				{discover && discover.results.map((movie) => <Card media_type="movie" item={movie} key={movie.id} />)}
+			</div>
+			<div className="container-btns">
+				{discover.page !== 1 && (
+					<Button onClick={handleFirstPage}>
+						<span className="material-icons">fast_rewind</span>
+					</Button>
+				)}
+				{discover.page !== 1 && (
+					<Button onClick={handlePreview}>
+						<span className="material-icons">chevron_left</span>
+					</Button>
+				)}
+				<span className="mx-2">
+					<strong>
+						{discover.page} / {discover.total_pages}
+					</strong>
+				</span>
+				{discover.page !== discover.total_pages && (
+					<Button onClick={handleNext}>
+						<span className="material-icons">navigate_next</span>
+					</Button>
+				)}
+				{discover.page !== discover.total_pages && (
+					<Button onClick={handleLastPage}>
+						<span class="material-icons">fast_forward</span>
+					</Button>
+				)}
 			</div>
 		</div>
 	);

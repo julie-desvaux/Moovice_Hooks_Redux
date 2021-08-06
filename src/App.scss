@@ -8,6 +8,17 @@
 	justify-content: space-around;
 }
 
+.container-btns {
+	margin-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mx-2 {
+	margin: 0 2rem;
+}
+
 .subtitle {
 	margin: 1.5rem 0;
 	font-weight: bold;
